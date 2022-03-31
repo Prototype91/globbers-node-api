@@ -2,11 +2,11 @@
   "name": "globbers-node-api",
   "version": "0.0.1",
   "description": "API for Globbers App",
-  "main": "dist/index.js",
+  "main": "index.js",
   "scripts": {
     "build": "tsc",
     "prestart": "npm run build",
-    "start": "node .",
+    "start": "npx nodemon dist/src/server.js",
     "test": "npx jest --coverage"
   },
   "author": "Lecomte Dylan, Hattab Sami",
@@ -15,6 +15,7 @@
     "body-parser": "^1.19.2",
     "express": "^4.17.3",
     "express-joi-validation": "^5.0.1",
+    "express-validator": "^6.14.0",
     "http-errors": "^2.0.0",
     "joi": "^17.6.0",
     "sequelize": "^6.16.3",
@@ -25,14 +26,16 @@
   },
   "devDependencies": {
     "@types/express": "^4.17.13",
+    "@types/jest": "^27.0.3",
     "@types/node": "^16.11.26",
+    "@types/supertest": "^2.0.12",
+    "@types/uuid": "^8.3.4",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
-    "@types/jest": "^27.0.3",
     "jest": "^27.4.3",
-    "ts-jest": "^27.0.7",
     "superagent": "^7.1.1",
     "supertest": "^6.2.2",
+    "ts-jest": "^27.0.7",
     "tslint": "^6.1.3",
     "typescript": "^4.5.5"
   }
