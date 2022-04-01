@@ -1,11 +1,11 @@
 import request from 'supertest';
 import app from '../app';
+import { RoutePaths } from '../enums/route-paths.enum';
 import { CountryModel } from '../models/country.model';
+import { mockCountry } from './mocks/country.mock';
 
 describe('When we create a country', () => {
-  const country = {
-    name: 'Canada',
-  };
+  const country = mockCountry();
 
   it('Should have key country and msg when created', async () => {
     const mockCreateCountry = jest.fn((): any => country);
@@ -13,7 +13,7 @@ describe('When we create a country', () => {
       .spyOn(CountryModel, 'create')
       .mockImplementation(() => mockCreateCountry());
 
-    const res = await request(app).post('/country').send(country);
+    const res = await request(app).post(RoutePaths.Country).send(country);
 
     expect(mockCreateCountry).toHaveBeenCalledTimes(1);
     expect(res.body).toHaveProperty('msg');
@@ -28,7 +28,7 @@ describe('When we create a country', () => {
       .spyOn(CountryModel, 'create')
       .mockImplementation(() => mockCreateCountry());
 
-    const res = await request(app).post('/country').send(country);
+    const res = await request(app).post(RoutePaths.Country).send(country);
 
     expect(mockCreateCountry).toHaveBeenCalledTimes(1);
     expect(res.body).toEqual({
@@ -39,7 +39,7 @@ describe('When we create a country', () => {
   });
 
   it('Should handle request param', async () => {
-    const res = await request(app).post('/country').send({});
+    const res = await request(app).post(RoutePaths.Country).send({});
 
     expect(res.body).toEqual({
       msg: 'The name value should not be empty',
@@ -50,9 +50,7 @@ describe('When we create a country', () => {
 });
 
 describe('When we get countries', () => {
-  const country = {
-    name: 'Canada',
-  };
+  const country = mockCountry();
 
   it('Should return an array of countries', async () => {
     const mockReadAllCountries = jest.fn((): any => [country]);
@@ -60,7 +58,7 @@ describe('When we get countries', () => {
       .spyOn(CountryModel, 'findAll')
       .mockImplementation(() => mockReadAllCountries());
 
-    const res = await request(app).get('/country');
+    const res = await request(app).get(RoutePaths.Country);
 
     expect(mockReadAllCountries).toHaveBeenCalledTimes(1);
     expect(res.body).toEqual([country]);
@@ -74,7 +72,7 @@ describe('When we get countries', () => {
       .spyOn(CountryModel, 'findAll')
       .mockImplementation(() => mockCreateCountry());
 
-    const res = await request(app).get('/country');
+    const res = await request(app).get(RoutePaths.Country);
     expect(mockCreateCountry).toHaveBeenCalledTimes(1);
     expect(res.body).toEqual({
       msg: 'fail to read',

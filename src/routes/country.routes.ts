@@ -1,4 +1,5 @@
 import express from 'express';
+import { RoutePaths } from '../enums/route-paths.enum';
 import countryHandler from '../handlers/country.handler';
 import errorHandlerMiddleware from '../middleware/error-handler.middleware';
 import countrySchema from '../schemas/country.schema';
@@ -7,7 +8,7 @@ const router = express.Router();
 
 // POST a country
 router.post(
-  '/',
+  RoutePaths.Default,
   countrySchema.checkCreateCountry(),
   errorHandlerMiddleware.handleValidationError,
   countryHandler.create
@@ -15,7 +16,7 @@ router.post(
 
 // GET all countries
 router.get(
-  '/',
+  RoutePaths.Default,
   countrySchema.checkReadCountry(),
   errorHandlerMiddleware.handleValidationError,
   countryHandler.read
@@ -23,7 +24,7 @@ router.get(
 
 // GET a specific country
 router.get(
-  '/:id',
+  RoutePaths.Id,
   countrySchema.checkIdParam(),
   errorHandlerMiddleware.handleValidationError,
   countryHandler.readByID
@@ -31,7 +32,7 @@ router.get(
 
 // UPDATE a country
 router.put(
-  '/:id',
+  RoutePaths.Id,
   countrySchema.checkIdParam(),
   errorHandlerMiddleware.handleValidationError,
   countryHandler.update
@@ -39,7 +40,7 @@ router.put(
 
 // DELETE a country
 router.delete(
-  '/:id',
+  RoutePaths.Id,
   countrySchema.checkIdParam(),
   errorHandlerMiddleware.handleValidationError,
   countryHandler.delete
