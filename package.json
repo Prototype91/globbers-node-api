@@ -4,9 +4,12 @@
   "description": "API for Globbers App",
   "main": "index.js",
   "scripts": {
-    "build": "npx tsc",
     "prestart": "npm run build",
-    "start": "npx nodemon dist/src/server.js",
+    "start": "node dist/src/server.js",
+    "postinstall": "tsc",
+    "watch-node": "npx nodemon dist/src/server.js",
+    "watch-ts": "npx tsc -w",
+    "build": "npx tsc",
     "test": "npx jest --coverage"
   },
   "author": "Lecomte Dylan, Hattab Sami",
