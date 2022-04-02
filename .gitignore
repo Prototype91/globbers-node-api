@@ -4,3 +4,5 @@ coverage
 *.sqlite
 .DS_Store
 /.idea
+.env
+.env.local

@@ -1,16 +1,16 @@
 import { Sequelize } from 'sequelize';
-import dotenv from 'dotenv';
+import dotenv, { DotenvSafeOptions } from 'dotenv-safe';
 
-dotenv.config();
+dotenv.config({ silent: false } as DotenvSafeOptions);
 
 const db: Sequelize = new Sequelize(
-  process.env.DATABASE as string,
-  process.env.USERNAME as string,
-  process.env.PASSWORD,
+  process.env.MYSQL_DATABASE as string,
+  process.env.MYSQL_USERNAME as string,
+  process.env.MYSQL_PASSWORD,
   {
-    host: process.env.HOST,
+    host: process.env.MYSQL_HOST,
     dialect: 'mysql',
-    port: process.env.PORT as unknown as number,
+    port: process.env.MYSQL_PORT as unknown as number,
   }
 );
 
