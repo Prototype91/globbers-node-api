@@ -1,8 +1,6 @@
 import { DataTypes, Model } from 'sequelize';
 import db from '../config/database.config';
 import { IUser } from '../interfaces/user.interface';
-import { Country } from './country.model';
-import { Role } from './role.model';
 
 export class User extends Model<IUser> {}
 
@@ -34,22 +32,10 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
-    },
+    }
   },
   {
     sequelize: db,
     tableName: 'users',
   }
 );
-
-User.hasMany(Country, {
-  sourceKey: 'id',
-  foreignKey: 'userId',
-  as: 'countries',
-});
-
-User.belongsToMany(Role, {
-  through: 'user_roles',
-  foreignKey: 'userId',
-  otherKey: 'roleId',
-});

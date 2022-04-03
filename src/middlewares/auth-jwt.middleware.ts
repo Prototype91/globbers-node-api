@@ -1,12 +1,11 @@
 import jwt from 'jsonwebtoken';
 import { secretKey } from '../constants/secret-key.const';
-import { NextFunction, Request, Response } from 'express';
-import request from 'superagent';
+import { NextFunction, Response } from 'express';
 import { User } from '../models/user.model';
 
 class AuthJwtMiddleware {
   public verifyToken = (req: any, res: Response, next: NextFunction) => {
-    let token = req.headers["x-access-token"] as string;
+    const token = req.headers["x-access-token"] as string;
 
     if (!token) {
       return res.status(403).send({
@@ -20,7 +19,6 @@ class AuthJwtMiddleware {
           message: 'Unauthorized!',
         });
       }
-      
       req.userId = decoded.id;
 
       next();
@@ -30,8 +28,8 @@ class AuthJwtMiddleware {
   public isAdmin = (req: any, res: Response, next: NextFunction) => {
     User.findByPk(req.userId).then((user: any) => {
       user.getRoles().then((roles: any) => {
-        for (let i = 0; i < roles.length; i++) {
-          if (roles[i].name === "admin") {
+        for (const item of roles) {
+          if (item.name === "admin") {
             next();
             return;
           }
@@ -42,6 +40,11 @@ class AuthJwtMiddleware {
         return;
       });
     });
+  };
+
+  public readonly authJwt = {
+    verifyToken: this.verifyToken,
+    isAdmin: this.isAdmin,
   };
 }
 

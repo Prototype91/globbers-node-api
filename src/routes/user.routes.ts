@@ -3,15 +3,23 @@ import {RoutePaths} from '../enums/route-paths.enum';
 import userHandler from '../handlers/user.handler';
 import errorHandlerMiddleware from '../middlewares/error-handler.middleware';
 import userSchema from '../schemas/user.schema';
+import verifySignupMiddleware from "../middlewares/verify-signup.middleware";
 
 const router = express.Router();
 
-// POST a user
+// Signup a user
 router.post(
-    RoutePaths.Default,
+    RoutePaths.AuthSignup,
     userSchema.checkCreateUser(),
+    [errorHandlerMiddleware.handleValidationError, verifySignupMiddleware.checkRolesExisted],
+    userHandler.Signup
+);
+
+// Signin a user
+router.post(
+    RoutePaths.AuthSignin,
     errorHandlerMiddleware.handleValidationError,
-    userHandler.create
+    userHandler.Signin
 );
 
 // GET user's countries
