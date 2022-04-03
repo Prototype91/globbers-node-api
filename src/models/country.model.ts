@@ -17,11 +17,10 @@ CountryModel.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        visited: {
-            type: DataTypes.BOOLEAN,
+        userId: {
+            type: DataTypes.UUID,
             allowNull: false,
-            defaultValue: false,
-        },
+        }
     },
     {
         sequelize: db,

@@ -1,6 +1,7 @@
 import {DataTypes, Model} from 'sequelize';
 import db from '../config/database.config';
 import {User} from '../interfaces/user.interface';
+import {CountryModel} from "./country.model";
 
 export class UserModel extends Model<User> {
 }
@@ -40,3 +41,9 @@ UserModel.init(
         tableName: 'users',
     }
 );
+
+UserModel.hasMany(CountryModel, {
+    sourceKey: 'id',
+    foreignKey: 'userId',
+    as: 'countries'
+});

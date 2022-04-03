@@ -18,6 +18,23 @@ class UserHandler {
         }
     }
 
+    public async getUserCountries(req: Request, res: Response): Promise<unknown> {
+        try {
+            const {id} = req.params;
+            const user = await UserModel.findOne({
+                where: {id},
+                include: UserModel.associations.countries
+            }) as any;
+            return res.json(user.countries);
+        } catch (e) {
+            return res.json({
+                msg: 'fail to read',
+                status: 500,
+                route: RoutePaths.Id,
+            });
+        }
+    }
+
     public async update(req: Request, res: Response): Promise<unknown> {
         try {
             const {id} = req.params;

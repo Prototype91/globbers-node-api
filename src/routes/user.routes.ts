@@ -1,5 +1,5 @@
 import express from 'express';
-import { RoutePaths } from '../enums/route-paths.enum';
+import {RoutePaths} from '../enums/route-paths.enum';
 import userHandler from '../handlers/user.handler';
 import errorHandlerMiddleware from '../middleware/error-handler.middleware';
 import userSchema from '../schemas/user.schema';
@@ -12,6 +12,14 @@ router.post(
     userSchema.checkCreateUser(),
     errorHandlerMiddleware.handleValidationError,
     userHandler.create
+);
+
+// GET user's countries
+router.get(
+    RoutePaths.UserCountries,
+    userSchema.checkIdParam(),
+    errorHandlerMiddleware.handleValidationError,
+    userHandler.getUserCountries
 );
 
 // UPDATE a user
