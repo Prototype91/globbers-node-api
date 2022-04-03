@@ -1,5 +1,7 @@
-export const mockCountry = (): { readonly name: string } => {
+import { ICountry } from '../../interfaces/country.interface';
+
+export const mockCountry = (): Pick<ICountry, 'name'> => {
   return {
-    name: 'Canada',
+    name: 'Canada'
   };
 };

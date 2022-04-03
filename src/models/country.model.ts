@@ -10,19 +10,19 @@ Country.init(
       type: DataTypes.UUID,
       primaryKey: true,
       allowNull: false,
-      defaultValue: DataTypes.UUIDV4,
+      defaultValue: DataTypes.UUIDV4
     },
     name: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: false
     },
     userId: {
       type: DataTypes.UUID,
-      allowNull: false,
-    },
+      allowNull: false
+    }
   },
   {
     sequelize: db,
-    tableName: 'countries',
+    tableName: 'countries'
   }
 );

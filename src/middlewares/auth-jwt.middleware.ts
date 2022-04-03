@@ -5,18 +5,18 @@ import { User } from '../models/user.model';
 
 class AuthJwtMiddleware {
   public verifyToken = (req: any, res: Response, next: NextFunction) => {
-    const token = req.headers["x-access-token"] as string;
+    const token = req.headers['x-access-token'] as string;
 
     if (!token) {
       return res.status(403).send({
-        message: 'No token provided!',
+        message: 'No token provided!'
       });
     }
 
     jwt.verify(token, secretKey, (err, decoded: any) => {
       if (err) {
         return res.status(401).send({
-          message: 'Unauthorized!',
+          message: 'Unauthorized!'
         });
       }
       req.userId = decoded.id;
@@ -29,13 +29,13 @@ class AuthJwtMiddleware {
     User.findByPk(req.userId).then((user: any) => {
       user.getRoles().then((roles: any) => {
         for (const item of roles) {
-          if (item.name === "admin") {
+          if (item.name === 'admin') {
             next();
             return;
           }
         }
         res.status(403).send({
-          message: "Require Admin Role!"
+          message: 'Require Admin Role!'
         });
         return;
       });
@@ -44,7 +44,7 @@ class AuthJwtMiddleware {
 
   public readonly authJwt = {
     verifyToken: this.verifyToken,
-    isAdmin: this.isAdmin,
+    isAdmin: this.isAdmin
   };
 }
 

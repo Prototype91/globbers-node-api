@@ -13,12 +13,12 @@ class CountryHandler {
       return res.json({
         msg: 'fail to create',
         status: 500,
-        route: RoutePaths.Default,
+        route: RoutePaths.Default
       });
     }
   }
 
-  public async read(req: Request, res: Response): Promise<unknown> {
+  public async read(_: Request, res: Response): Promise<unknown> {
     try {
       const countries = await Country.findAll();
       return res.json(countries);
@@ -26,7 +26,7 @@ class CountryHandler {
       return res.json({
         msg: 'fail to read',
         status: 500,
-        route: RoutePaths.Default,
+        route: RoutePaths.Default
       });
     }
   }
@@ -40,7 +40,7 @@ class CountryHandler {
       return res.json({
         msg: 'fail to read',
         status: 500,
-        route: RoutePaths.Id,
+        route: RoutePaths.Id
       });
     }
   }
@@ -61,7 +61,7 @@ class CountryHandler {
       return res.json({
         msg: 'fail to read',
         status: 500,
-        route: RoutePaths.Id,
+        route: RoutePaths.Id
       });
     }
   }
@@ -81,7 +81,7 @@ class CountryHandler {
       return res.json({
         msg: 'fail to read',
         status: 500,
-        route: RoutePaths.Id,
+        route: RoutePaths.Id
       });
     }
   }

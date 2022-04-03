@@ -1,16 +1,14 @@
 {
-	"compilerOptions": {
-		"target": "ESNEXT",
-		"module": "commonjs",
-		"outDir": "./dist",
-		"rootDir": "./",
-		"strict": true,
-		"moduleResolution": "node",
-		"esModuleInterop": true,
-		"skipLibCheck": true,
-		"forceConsistentCasingInFileNames": true,
-	},
-	"exclude": [
-		"src/**/*.spec.ts",
-	]
+  "compilerOptions": {
+    "target": "ESNEXT",
+    "module": "commonjs",
+    "outDir": "./dist",
+    "rootDir": "./",
+    "strict": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "exclude": ["src/**/*.spec.ts"]
 }

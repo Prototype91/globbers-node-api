@@ -7,7 +7,7 @@ class VerifySignUpMiddleware {
       for (let i = 0; i < req.body.roles.length; i++) {
         if (!roles.includes(req.body.roles[i])) {
           res.status(400).send({
-            message: "Failed! Role does not exist = " + req.body.roles[i]
+            message: 'Failed! Role does not exist = ' + req.body.roles[i]
           });
           return;
         }
