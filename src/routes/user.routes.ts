@@ -1,7 +1,7 @@
 import express from 'express';
 import {RoutePaths} from '../enums/route-paths.enum';
 import userHandler from '../handlers/user.handler';
-import errorHandlerMiddleware from '../middleware/error-handler.middleware';
+import errorHandlerMiddleware from '../middlewares/error-handler.middleware';
 import userSchema from '../schemas/user.schema';
 
 const router = express.Router();

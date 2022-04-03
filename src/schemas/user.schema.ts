@@ -1,5 +1,5 @@
 import {body, param, ValidationChain} from 'express-validator';
-import {UserModel} from "../models/user.model";
+import {User} from "../models/user.model";
 
 class UserSchema {
     public checkCreateUser(): ValidationChain[] {
@@ -18,7 +18,7 @@ class UserSchema {
                 .notEmpty()
                 .withMessage('The username value should not be empty')
                 .custom(async value => {
-                    const existingUser = await UserModel.findOne({where: {username: value}});
+                    const existingUser = await User.findOne({where: {username: value}});
 
                     if (existingUser) {
                         return Promise.reject('Username already taken');
@@ -31,7 +31,7 @@ class UserSchema {
                 .notEmpty()
                 .withMessage('The email value should not be empty')
                 .custom(async value => {
-                    const existingUser = await UserModel.findOne({where: {email: value}});
+                    const existingUser = await User.findOne({where: {email: value}});
 
                     if (existingUser) {
                         return Promise.reject('Email already taken');

@@ -1,7 +1,7 @@
 import request from 'supertest';
 import app from '../app';
 import { RoutePaths } from '../enums/route-paths.enum';
-import { CountryModel } from '../models/country.model';
+import { Country } from '../models/country.model';
 import { mockCountry } from './mocks/country.mock';
 
 describe('When we create a country', () => {
@@ -9,9 +9,7 @@ describe('When we create a country', () => {
 
   it('Should have key country and msg when created', async () => {
     const mockCreateCountry = jest.fn((): any => country);
-    jest
-      .spyOn(CountryModel, 'create')
-      .mockImplementation(() => mockCreateCountry());
+    jest.spyOn(Country, 'create').mockImplementation(() => mockCreateCountry());
 
     const res = await request(app).post(RoutePaths.Country).send(country);
 
@@ -24,9 +22,7 @@ describe('When we create a country', () => {
     const mockCreateCountry = jest.fn((): any => {
       throw 'error';
     });
-    jest
-      .spyOn(CountryModel, 'create')
-      .mockImplementation(() => mockCreateCountry());
+    jest.spyOn(Country, 'create').mockImplementation(() => mockCreateCountry());
 
     const res = await request(app).post(RoutePaths.Country).send(country);
 
@@ -55,7 +51,7 @@ describe('When we get countries', () => {
   it('Should return an array of countries', async () => {
     const mockReadAllCountries = jest.fn((): any => [country]);
     jest
-      .spyOn(CountryModel, 'findAll')
+      .spyOn(Country, 'findAll')
       .mockImplementation(() => mockReadAllCountries());
 
     const res = await request(app).get(RoutePaths.Country);
@@ -69,7 +65,7 @@ describe('When we get countries', () => {
       throw 'error';
     });
     jest
-      .spyOn(CountryModel, 'findAll')
+      .spyOn(Country, 'findAll')
       .mockImplementation(() => mockCreateCountry());
 
     const res = await request(app).get(RoutePaths.Country);
