@@ -4,6 +4,7 @@ import countryHandler from '../handlers/country.handler';
 import errorHandlerMiddleware from '../middlewares/error-handler.middleware';
 import countrySchema from '../schemas/country.schema';
 
+// Country Router
 const router = express.Router();
 
 // POST a country

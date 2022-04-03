@@ -1,6 +1,6 @@
-export interface GeodbCountryResponseModel {
-  readonly data: Data;
-  readonly metadata: MetaData;
+export interface IGeodbCountryResponse {
+  readonly data: IData;
+  readonly metadata: IMetaData;
 }
 
 interface IGeodbCountry {
@@ -11,11 +11,11 @@ interface IGeodbCountry {
   readonly wikiDataId?: string;
 }
 
-interface Data {
+interface IData {
   readonly data: IGeodbCountry[];
 }
 
-interface MetaData {
+interface IMetaData {
   readonly currentOffset: number;
   readonly totalCount: number;
 }

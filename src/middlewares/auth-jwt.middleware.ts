@@ -2,6 +2,7 @@ import jwt from 'jsonwebtoken';
 import { secretKey } from '../constants/secret-key.const';
 import { NextFunction, Response } from 'express';
 import { User } from '../models/user.model';
+import { Roles } from '../enums/roles.enum';
 
 class AuthJwtMiddleware {
   public verifyToken = (req: any, res: Response, next: NextFunction) => {
@@ -29,7 +30,7 @@ class AuthJwtMiddleware {
     User.findByPk(req.userId).then((user: any) => {
       user.getRoles().then((roles: any) => {
         for (const item of roles) {
-          if (item.name === 'admin') {
+          if (item.name === Roles.Admin) {
             next();
             return;
           }
@@ -42,7 +43,7 @@ class AuthJwtMiddleware {
     });
   };
 
-  public readonly authJwt = {
+  private readonly authJwt = {
     verifyToken: this.verifyToken,
     isAdmin: this.isAdmin
   };

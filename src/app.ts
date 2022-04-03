@@ -14,6 +14,6 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(RoutePaths.Country, countryRouter);
 app.use(RoutePaths.User, userRouter);
-app.use(RoutePaths.SearchCountry, searchRouter);
+app.use(RoutePaths.Search, searchRouter);
 
 export default app;

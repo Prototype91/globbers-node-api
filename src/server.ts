@@ -1,6 +1,7 @@
 import app from './app';
 import db from './config/database.config';
-import { Associations } from './models/association';
+import { localPort } from './constants/port.const';
+import { Associations } from './models/associations';
 
 db.sync()
   .then(() => {
@@ -10,7 +11,7 @@ db.sync()
 
 Associations.associate();
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || localPort;
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port} !`);

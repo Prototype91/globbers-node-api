@@ -5,6 +5,7 @@ import errorHandlerMiddleware from '../middlewares/error-handler.middleware';
 import userSchema from '../schemas/user.schema';
 import verifySignupMiddleware from '../middlewares/verify-signup.middleware';
 
+// User Router
 const router = express.Router();
 
 // Signup a user

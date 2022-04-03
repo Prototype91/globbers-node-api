@@ -1,9 +1,9 @@
 import { ICountry } from '../../interfaces/country.interface';
-import { GeodbCountryResponseModel } from '../../interfaces/geodb-country-response.interface';
+import { IGeodbCountryResponse } from '../../interfaces/geodb-country-response.interface';
 import country from 'country-list-js';
 
 export class SearchCountryMapper {
-  public static mapToCountry(response: GeodbCountryResponseModel): ICountry[] {
+  public static mapToCountry(response: IGeodbCountryResponse): ICountry[] {
     return response.data.data.map(item => ({
       id: item.id,
       code: item.code,
