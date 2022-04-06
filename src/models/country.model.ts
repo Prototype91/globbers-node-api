@@ -1,5 +1,6 @@
 import { DataTypes, Model } from 'sequelize';
 import db from '../config/database.config';
+import { TableNames } from '../enums/table-names.enum';
 import { ICountry } from '../interfaces/country.interface';
 
 export class Country extends Model<ICountry> {}
@@ -23,6 +24,6 @@ Country.init(
   },
   {
     sequelize: db,
-    tableName: 'countries'
+    tableName: TableNames.Country
   }
 );

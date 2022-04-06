@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "npx tsc",
-    "prestart": "npm run build",
+    "prestart": "rm -rf dist/ && npm run build",
     "start": "npx nodemon dist/src/server.js",
     "test": "npx jest --coverage --detectOpenHandles",
     "lint": "npx prettier --write ./src"

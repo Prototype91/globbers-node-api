@@ -1,6 +1,7 @@
 import { User } from './user.model';
 import { Role } from './role.model';
 import { Country } from './country.model';
+import { TableNames } from '../enums/table-names.enum';
 
 export class Associations {
   public static associate(): void {
@@ -11,15 +12,11 @@ export class Associations {
     });
 
     User.belongsToMany(Role, {
-      through: 'user_roles',
-      foreignKey: 'userId',
-      otherKey: 'roleId'
+      through: TableNames.UserRole
     });
 
     Role.belongsToMany(User, {
-      through: 'user_roles',
-      foreignKey: 'roleId',
-      otherKey: 'userId'
+      through: TableNames.UserRole
     });
   }
 }

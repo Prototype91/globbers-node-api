@@ -1,8 +1,12 @@
 import { DataTypes, Model } from 'sequelize';
 import db from '../config/database.config';
+import { TableNames } from '../enums/table-names.enum';
 import { IUser } from '../interfaces/user.interface';
 
-export class User extends Model<IUser> {}
+export class User extends Model<IUser> {
+  // fix typescript error of setRoles method
+  [x: string]: any;
+}
 
 User.init(
   {
@@ -36,6 +40,6 @@ User.init(
   },
   {
     sequelize: db,
-    tableName: 'users'
+    tableName: TableNames.User
   }
 );

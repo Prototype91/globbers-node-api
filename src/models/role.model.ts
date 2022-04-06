@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import db from '../config/database.config';
 import { IRole } from '../interfaces/role.interface';
 import { Roles } from '../enums/roles.enum';
+import { TableNames } from '../enums/table-names.enum';
 
 export class Role extends Model<IRole> {}
 
@@ -21,7 +22,7 @@ Role.init(
   },
   {
     sequelize: db,
-    tableName: 'role'
+    tableName: TableNames.Role
   }
 );
 const getRoles = async (): Promise<unknown[]> => {

@@ -2,27 +2,28 @@ import { Request, Response } from 'express';
 import { v4 as uuidv4 } from 'uuid';
 import { RoutePaths } from '../enums/route-paths.enum';
 import { User } from '../models/user.model';
-import { Role } from '../models/role.model';
-import { Op } from 'sequelize';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 import { secretKey } from '../constants/secret-key.const';
+import { Role } from '../models/role.model';
 
 class UserHandler {
   public async Signup(req: Request, res: Response): Promise<any> {
     const id = uuidv4();
+    const { name, lastname, username, email } = req.body;
     User.create({
-      ...req.body,
       id,
+      name,
+      lastname,
+      username,
+      email,
       password: bcrypt.hashSync(req.body.password, 8)
     })
       .then((user: any) => {
-        if (req.body.roles) {
+        if (req.body.role) {
           Role.findAll({
             where: {
-              name: {
-                [Op.or]: req.body.roles
-              }
+              name: req.body.role
             }
           })
             .then(roles => {
@@ -37,13 +38,14 @@ class UserHandler {
               res.status(500).send({ msg: err.message });
             });
         } else {
-          // user role = 1
-          user
-            .setRoles([1])
-            .then(() => {
-              res.send({ msg: 'User was registered successfully!' });
-            })
-            .catch((err: any) => res.status(500).send({ msg: err.message }));
+          Role.findOne({ where: { name: 'user' } }).then(role => {
+            user
+              .setRoles(role)
+              .then(() => {
+                res.send({ msg: 'User was registered successfully!' });
+              })
+              .catch((err: any) => res.status(500).send({ msg: err.message }));
+          });
         }
       })
       .catch(err => {
