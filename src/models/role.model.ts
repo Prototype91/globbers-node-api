@@ -22,23 +22,27 @@ Role.init(
   },
   {
     sequelize: db,
-    tableName: TableNames.Role
+    tableName: TableNames.Roles
   }
 );
 const getRoles = async (): Promise<unknown[]> => {
   return await Role.findAll();
 };
 
-getRoles().then(res => {
-  if (!res?.length) {
-    Role.create({
-      id: uuidv4(),
-      name: Roles.User
-    });
+getRoles()
+  .then(res => {
+    if (!res?.length) {
+      Role.create({
+        id: uuidv4(),
+        name: Roles.User
+      });
 
-    Role.create({
-      id: uuidv4(),
-      name: Roles.Admin
-    });
-  }
-});
+      Role.create({
+        id: uuidv4(),
+        name: Roles.Admin
+      });
+    }
+  })
+  .catch(e => {
+    console.error(e);
+  });

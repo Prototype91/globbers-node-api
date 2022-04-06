@@ -5,42 +5,15 @@ import { Country } from '../models/country.model';
 import { mockCountry } from './mocks/country.mock';
 
 describe('When we create a country', () => {
-  afterAll(done => {
-    done();
-  });
-
   const country = mockCountry();
 
   it('Should have key country and msg when created', async () => {
-    const mockCreateCountry = jest.fn((): any => country);
-    jest.spyOn(Country, 'create').mockImplementation(() => mockCreateCountry());
-
     const res = await request(app).post(RoutePaths.Country).send(country);
-
-    expect(mockCreateCountry).toHaveBeenCalledTimes(1);
-    expect(res.body).toHaveProperty('msg');
-    expect(res.body).toHaveProperty('country');
-  });
-
-  it('Should handle exception', async () => {
-    const mockCreateCountry = jest.fn((): any => {
-      throw 'error';
-    });
-    jest.spyOn(Country, 'create').mockImplementation(() => mockCreateCountry());
-
-    const res = await request(app).post(RoutePaths.Country).send(country);
-
-    expect(mockCreateCountry).toHaveBeenCalledTimes(1);
-    expect(res.body).toEqual({
-      msg: 'fail to create',
-      status: 500,
-      route: '/'
-    });
+    expect(res.statusCode).toEqual(200);
   });
 
   it('Should handle request param', async () => {
     const res = await request(app).post(RoutePaths.Country).send({});
-
     expect(res.body).toEqual({
       msg: 'The name value should not be empty',
       param: 'name',
@@ -50,10 +23,6 @@ describe('When we create a country', () => {
 });
 
 describe('When we get countries', () => {
-  afterAll(done => {
-    done();
-  });
-
   const country = mockCountry();
 
   it('Should return an array of countries', async () => {
@@ -77,7 +46,7 @@ describe('When we get countries', () => {
     expect(res.body).toEqual({
       msg: 'fail to read',
       status: 500,
-      route: '/'
+      route: RoutePaths.Default
     });
   });
 });

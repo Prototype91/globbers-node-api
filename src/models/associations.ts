@@ -12,11 +12,11 @@ export class Associations {
     });
 
     User.belongsToMany(Role, {
-      through: TableNames.UserRole
+      through: TableNames.UserRoles
     });
 
     Role.belongsToMany(User, {
-      through: TableNames.UserRole
+      through: TableNames.UserRoles
     });
   }
 }

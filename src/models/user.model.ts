@@ -40,6 +40,6 @@ User.init(
   },
   {
     sequelize: db,
-    tableName: TableNames.User
+    tableName: TableNames.Users
   }
 );

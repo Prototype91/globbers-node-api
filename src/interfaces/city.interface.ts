@@ -1,5 +1,6 @@
 export interface ICity {
-  readonly id: number;
+  readonly id?: number;
+  readonly userId?: string;
   readonly countryCode: string;
   readonly latitude: number;
   readonly longitude: number;
@@ -10,5 +11,4 @@ export interface ICity {
   readonly type: string;
   readonly wikiDataId: string;
   readonly countryName: string;
-  readonly country?: string;
 }
