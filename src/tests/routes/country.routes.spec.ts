@@ -1,8 +1,8 @@
 import request from 'supertest';
-import app from '../app';
-import { RoutePaths } from '../enums/route-paths.enum';
-import { Country } from '../models/country.model';
-import { mockCountry } from './mocks/country.mock';
+import app from '../../app';
+import { RoutePaths } from '../../enums/route-paths.enum';
+import { Country } from '../../models/country.model';
+import { mockCountry } from '../data/country.mock';
 
 describe('When we create a country', () => {
   const country = mockCountry();

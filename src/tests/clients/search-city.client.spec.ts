@@ -1,4 +1,4 @@
-import { SearchCityClient } from '../services/clients/search-city.client';
+import { SearchCityClient } from '../../services/clients/search-city.client';
 
 describe(SearchCityClient.name, () => {
   describe(`When we call ${SearchCityClient.getCitiesBySearchText.name}()`, () => {

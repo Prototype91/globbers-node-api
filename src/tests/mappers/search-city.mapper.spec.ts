@@ -1,12 +1,14 @@
-import { SearchCityMapper } from '../services/mappers/search-city.mapper';
-import { mockGeoDbCityResponse } from './mocks/geodb-city-response.mock';
+import { ICity } from '../../interfaces/city.interface';
+import { IGeodbCityResponse } from '../../interfaces/geodb-city-response.interface';
+import { SearchCityMapper } from '../../services/mappers/search-city.mapper';
+import { mockGeoDbCityResponse } from '../data/geodb-city-response.mock';
 
 describe(SearchCityMapper.name, () => {
   describe(`When we call ${SearchCityMapper.mapToCity.name}()`, () => {
     it('Should return an array of mapped cities', () => {
-      const mockResponse = mockGeoDbCityResponse();
+      const mockResponse: IGeodbCityResponse = mockGeoDbCityResponse();
 
-      const mockCities = [
+      const mockCities: ICity[] = [
         {
           countryCode: 'CA',
           countryName: 'Canada',
