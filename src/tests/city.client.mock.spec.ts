@@ -1,7 +1,7 @@
 import { SearchCityClient } from '../services/clients/search-city.client';
 
 describe(SearchCityClient.name, () => {
-  describe(`When we call ${SearchCityClient.getCitiesBySearchText.name}`, () => {
+  describe(`When we call ${SearchCityClient.getCitiesBySearchText.name}()`, () => {
     it('Should return a response of cities', async () => {
       await SearchCityClient.getCitiesBySearchText('Montréal').then(res => {
         expect(res.data).toStrictEqual({

@@ -2,7 +2,7 @@ import { SearchCityMapper } from '../services/mappers/search-city.mapper';
 import { mockGeoDbCityResponse } from './mocks/geodb-city-response.mock';
 
 describe(SearchCityMapper.name, () => {
-  describe(`When we call ${SearchCityMapper.mapToCity.name}`, () => {
+  describe(`When we call ${SearchCityMapper.mapToCity.name}()`, () => {
     it('Should return an array of mapped cities', () => {
       const mockResponse = mockGeoDbCityResponse();
 
