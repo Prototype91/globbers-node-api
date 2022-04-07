@@ -3,6 +3,7 @@ import { RoutePaths } from '../enums/route-paths.enum';
 import countryHandler from '../handlers/country.handler';
 import errorHandlerMiddleware from '../middlewares/error-handler.middleware';
 import countrySchema from '../schemas/country.schema';
+import authJwtMiddleware from '../middlewares/auth-jwt.middleware';
 
 // Country Router
 const router = express.Router();
@@ -11,7 +12,7 @@ const router = express.Router();
 router.post(
   RoutePaths.Default,
   countrySchema.checkCreateCountry(),
-  errorHandlerMiddleware.handleValidationError,
+  [errorHandlerMiddleware.handleValidationError, authJwtMiddleware.verifyToken],
   countryHandler.create
 );
 

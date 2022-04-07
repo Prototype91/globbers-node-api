@@ -4,8 +4,34 @@ class CountrySchema {
   public checkCreateCountry(): ValidationChain[] {
     return [
       body('id').optional().isUUID(4).withMessage('The value should be UUID v4'),
-      body('name').notEmpty().withMessage('The name value should not be empty'),
-      body('userId').notEmpty().withMessage('The country should be linked to a user')
+      body('name')
+        .notEmpty()
+        .withMessage('The name value should not be empty')
+        .isString()
+        .withMessage('The name should be a string'),
+      body('userId')
+        .notEmpty()
+        .withMessage('The country should be linked to a user')
+        .isUUID(4)
+        .withMessage('The userId should be a uuid'),
+      body('continent')
+        .notEmpty()
+        .withMessage('The continent value should not be empty')
+        .isString()
+        .withMessage('The continent value should be a string'),
+      body('code')
+        .notEmpty()
+        .withMessage('The code value should not be empty')
+        .isString()
+        .withMessage('The code value should be a string'),
+      body('currencyCode')
+        .optional()
+        .isJSON()
+        .withMessage('The currencyCode value should be a JSON'),
+      body('wikiDataId')
+        .optional()
+        .isString()
+        .withMessage('The wikiDataId value should be a string')
     ];
   }
 

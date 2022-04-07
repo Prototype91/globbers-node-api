@@ -12,6 +12,7 @@ class CountryHandler {
     } catch (e) {
       return res.json({
         msg: 'fail to create',
+        error: e,
         status: 500,
         route: RoutePaths.Default
       });

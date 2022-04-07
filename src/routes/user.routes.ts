@@ -4,6 +4,7 @@ import userHandler from '../handlers/user.handler';
 import errorHandlerMiddleware from '../middlewares/error-handler.middleware';
 import userSchema from '../schemas/user.schema';
 import verifySignupMiddleware from '../middlewares/verify-signup.middleware';
+import authJwtMiddleware from '../middlewares/auth-jwt.middleware';
 
 // User Router
 const router = express.Router();
@@ -43,7 +44,7 @@ router.put(
 router.delete(
   RoutePaths.Id,
   userSchema.checkIdParam(),
-  errorHandlerMiddleware.handleValidationError,
+  [errorHandlerMiddleware.handleValidationError, authJwtMiddleware.isAdmin],
   userHandler.delete
 );
 
