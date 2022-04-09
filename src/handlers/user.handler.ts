@@ -1,14 +1,15 @@
-import { Request, Response } from 'express';
-import { v4 as uuidv4 } from 'uuid';
-import { RoutePaths } from '../enums/route-paths.enum';
-import { User } from '../models/user.model';
-import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
+import { Request, Response } from 'express';
+import jwt from 'jsonwebtoken';
+import { v4 as uuidv4 } from 'uuid';
 import { secretKey } from '../constants/secret-key.const';
+import { RoutePaths } from '../enums/route-paths.enum';
+import { CustomRequest } from '../interfaces/custom-request.interface';
 import { Role } from '../models/role.model';
+import { User } from '../models/user.model';
 
 class UserHandler {
-  public async Signup(req: Request, res: Response): Promise<any> {
+  public async Signup(req: Request, res: Response): Promise<void> {
     const id = uuidv4();
     const { name, lastname, username, email } = req.body;
     User.create({
@@ -92,7 +93,7 @@ class UserHandler {
       });
   }
 
-  public async read(req: Request, res: Response): Promise<any> {
+  public async read(_: Request, res: Response): Promise<unknown> {
     try {
       const users = await User.findAll();
       return res.json(users);
@@ -105,7 +106,7 @@ class UserHandler {
     }
   }
 
-  public async update(req: Request | any, res: Response): Promise<unknown> {
+  public async update(req: CustomRequest, res: Response): Promise<unknown> {
     try {
       const id = req.userId;
       const user = await User.findOne({ where: { id } });

@@ -1,10 +1,11 @@
-import { Request, Response } from 'express';
+import { Response } from 'express';
 import { v4 as uuidv4 } from 'uuid';
 import { RoutePaths } from '../enums/route-paths.enum';
+import { CustomRequest } from '../interfaces/custom-request.interface';
 import { City } from '../models/city.model';
 
 class CityHandler {
-  public async create(req: Request | any, res: Response): Promise<unknown> {
+  public async create(req: CustomRequest, res: Response): Promise<unknown> {
     const userId = req.userId;
     const id = uuidv4();
     try {
@@ -19,7 +20,7 @@ class CityHandler {
     }
   }
 
-  public async read(req: Request | any, res: Response): Promise<unknown> {
+  public async read(req: CustomRequest, res: Response): Promise<unknown> {
     const userId = req.userId;
     try {
       const countries = await City.findAll({ where: { userId } });
@@ -33,7 +34,7 @@ class CityHandler {
     }
   }
 
-  public async readByID(req: Request | any, res: Response): Promise<unknown> {
+  public async readByID(req: CustomRequest, res: Response): Promise<unknown> {
     const userId = req.userId;
     const { id } = req.params;
     try {
@@ -48,7 +49,7 @@ class CityHandler {
     }
   }
 
-  public async update(req: Request | any, res: Response): Promise<unknown> {
+  public async update(req: CustomRequest, res: Response): Promise<unknown> {
     const userId = req.userId;
     const { id } = req.params;
     try {
@@ -69,7 +70,7 @@ class CityHandler {
       });
     }
   }
-  public async delete(req: Request | any, res: Response): Promise<unknown> {
+  public async delete(req: CustomRequest, res: Response): Promise<unknown> {
     const userId = req.userId;
     try {
       const { id } = req.params;

@@ -1,8 +1,8 @@
+import { NextFunction, Response } from 'express';
 import jwt from 'jsonwebtoken';
 import { secretKey } from '../constants/secret-key.const';
-import { NextFunction, Response } from 'express';
-import { User } from '../models/user.model';
 import { Roles } from '../enums/roles.enum';
+import { User } from '../models/user.model';
 
 class AuthJwtMiddleware {
   public verifyToken = (req: any, res: Response, next: NextFunction) => {

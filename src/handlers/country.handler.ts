@@ -1,14 +1,11 @@
-import { Request, Response } from 'express';
+import { Response } from 'express';
 import { v4 as uuidv4 } from 'uuid';
 import { RoutePaths } from '../enums/route-paths.enum';
+import { CustomRequest } from '../interfaces/custom-request.interface';
 import { Country } from '../models/country.model';
 
-interface CustomUserRequest extends Request {
-  readonly userId?: string;
-}
-
 class CountryHandler {
-  public async create(req: CustomUserRequest, res: Response): Promise<unknown> {
+  public async create(req: CustomRequest, res: Response): Promise<unknown> {
     const id = uuidv4();
     const userId = req.userId;
     try {
@@ -41,7 +38,7 @@ class CountryHandler {
     }
   }
 
-  public async read(req: Request | any, res: Response): Promise<unknown> {
+  public async read(req: CustomRequest, res: Response): Promise<unknown> {
     const userId = req.userId;
     try {
       const countries = await Country.findAll({ where: { userId } });
@@ -55,7 +52,7 @@ class CountryHandler {
     }
   }
 
-  public async readByID(req: Request | any, res: Response): Promise<unknown> {
+  public async readByID(req: CustomRequest, res: Response): Promise<unknown> {
     const userId = req.userId;
     try {
       const { id } = req.params;
@@ -70,7 +67,7 @@ class CountryHandler {
     }
   }
 
-  public async update(req: Request | any, res: Response): Promise<unknown> {
+  public async update(req: CustomRequest, res: Response): Promise<unknown> {
     const userId = req.userId;
     try {
       const { id } = req.params;
@@ -94,7 +91,7 @@ class CountryHandler {
       });
     }
   }
-  public async delete(req: Request | any, res: Response): Promise<unknown> {
+  public async delete(req: CustomRequest, res: Response): Promise<unknown> {
     const userId = req.userId;
     try {
       const { id } = req.params;
