@@ -3,6 +3,7 @@ import { RoutePaths } from '../enums/route-paths.enum';
 import cityHandler from '../handlers/city.handler';
 import errorHandlerMiddleware from '../middlewares/error-handler.middleware';
 import citySchema from '..//schemas/city.schema';
+import authJwtMiddleware from '../middlewares/auth-jwt.middleware';
 
 // City Router
 const router = express.Router();
@@ -11,15 +12,14 @@ const router = express.Router();
 router.post(
   RoutePaths.Default,
   citySchema.checkCreateCity(),
-  errorHandlerMiddleware.handleValidationError,
+  [errorHandlerMiddleware.handleValidationError, authJwtMiddleware.verifyToken],
   cityHandler.create
 );
 
 // GET all Cities
 router.get(
   RoutePaths.Default,
-  citySchema.checkReadCity(),
-  errorHandlerMiddleware.handleValidationError,
+  [errorHandlerMiddleware.handleValidationError, authJwtMiddleware.verifyToken],
   cityHandler.read
 );
 
@@ -27,7 +27,7 @@ router.get(
 router.get(
   RoutePaths.Id,
   citySchema.checkIdParam(),
-  errorHandlerMiddleware.handleValidationError,
+  [errorHandlerMiddleware.handleValidationError, authJwtMiddleware.verifyToken],
   cityHandler.readByID
 );
 
@@ -35,7 +35,7 @@ router.get(
 router.put(
   RoutePaths.Id,
   citySchema.checkIdParam(),
-  errorHandlerMiddleware.handleValidationError,
+  [errorHandlerMiddleware.handleValidationError, authJwtMiddleware.verifyToken],
   cityHandler.update
 );
 
@@ -43,7 +43,7 @@ router.put(
 router.delete(
   RoutePaths.Id,
   citySchema.checkIdParam(),
-  errorHandlerMiddleware.handleValidationError,
+  [errorHandlerMiddleware.handleValidationError, authJwtMiddleware.verifyToken],
   cityHandler.delete
 );
 

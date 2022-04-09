@@ -1,6 +1,5 @@
-import { body, param, query, ValidationChain } from 'express-validator';
+import { body, param, ValidationChain } from 'express-validator';
 import schemaErrorHelper from '../services/helpers/schema-error.helper';
-import { User } from '../models/user.model';
 
 class CountrySchema {
   public checkCreateCountry(): ValidationChain[] | any {
@@ -11,20 +10,6 @@ class CountrySchema {
         .withMessage('The name value should not be empty')
         .isString()
         .withMessage('The name should be a string'),
-      body('userId')
-        .notEmpty()
-        .withMessage('The country should be linked to a user')
-        .isUUID(4)
-        .withMessage('The userId should be a uuid')
-        .custom(async value => {
-          if (value) {
-            const user = await User.findByPk(value);
-
-            if (!user) {
-              return Promise.reject('This user does not exist');
-            }
-          }
-        }),
       body('continent')
         .notEmpty()
         .withMessage('The continent value should not be empty')
@@ -34,7 +19,9 @@ class CountrySchema {
         .notEmpty()
         .withMessage('The code value should not be empty')
         .isString()
-        .withMessage('The code value should be a string'),
+        .withMessage('The code value should be a string')
+        .isLength({ min: 2, max: 2 })
+        .withMessage('The code value should have a length of 2 letters'),
       body('currencyCode')
         .optional()
         .isJSON()
@@ -44,16 +31,6 @@ class CountrySchema {
         .isString()
         .withMessage('The wikiDataId value should be a string'),
       schemaErrorHelper
-    ];
-  }
-
-  public checkReadCountry(): ValidationChain[] {
-    return [
-      query('limit')
-        .optional()
-        .isInt({ min: 1, max: 10 })
-        .withMessage('The limit value should be number and between 1-10'),
-      query('offset').optional().isNumeric().withMessage('The value should be number')
     ];
   }
 

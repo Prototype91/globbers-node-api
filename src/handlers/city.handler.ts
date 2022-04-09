@@ -4,11 +4,12 @@ import { RoutePaths } from '../enums/route-paths.enum';
 import { City } from '../models/city.model';
 
 class CityHandler {
-  public async create(req: Request, res: Response): Promise<unknown> {
+  public async create(req: Request | any, res: Response): Promise<unknown> {
+    const userId = req.userId;
     const id = uuidv4();
     try {
-      const city = await City.create({ ...req.body, id });
-      return res.json({ city, msg: 'Successfully create city' });
+      const city = await City.create({ ...req.body, userId, id });
+      return res.json({ city, msg: 'The city has successfully been created' });
     } catch (e) {
       return res.json({
         msg: 'fail to create',
@@ -18,9 +19,10 @@ class CityHandler {
     }
   }
 
-  public async read(_: Request, res: Response): Promise<unknown> {
+  public async read(req: Request | any, res: Response): Promise<unknown> {
+    const userId = req.userId;
     try {
-      const countries = await City.findAll();
+      const countries = await City.findAll({ where: { userId } });
       return res.json(countries);
     } catch (e) {
       return res.json({
@@ -31,10 +33,11 @@ class CityHandler {
     }
   }
 
-  public async readByID(req: Request, res: Response): Promise<unknown> {
+  public async readByID(req: Request | any, res: Response): Promise<unknown> {
+    const userId = req.userId;
+    const { id } = req.params;
     try {
-      const { id } = req.params;
-      const city = await City.findOne({ where: { id } });
+      const city = await City.findOne({ where: { id, userId } });
       return res.json(city);
     } catch (e) {
       return res.json({
@@ -45,10 +48,11 @@ class CityHandler {
     }
   }
 
-  public async update(req: Request, res: Response): Promise<unknown> {
+  public async update(req: Request | any, res: Response): Promise<unknown> {
+    const userId = req.userId;
+    const { id } = req.params;
     try {
-      const { id } = req.params;
-      const city = await City.findOne({ where: { id } });
+      const city = await City.findOne({ where: { id, userId } });
 
       if (!city) {
         return res.json({ msg: 'Can not find existing city' });
@@ -56,7 +60,7 @@ class CityHandler {
 
       const updatedcity = await city.update({ ...req.body });
 
-      return res.json({ city: updatedcity });
+      return res.json({ city: updatedcity, msg: 'The city has successfully been updated' });
     } catch (e) {
       return res.json({
         msg: 'fail to read',
@@ -65,18 +69,19 @@ class CityHandler {
       });
     }
   }
-  public async delete(req: Request, res: Response): Promise<unknown> {
+  public async delete(req: Request | any, res: Response): Promise<unknown> {
+    const userId = req.userId;
     try {
       const { id } = req.params;
-      const city = await City.findOne({ where: { id } });
+      const city = await City.findOne({ where: { id, userId } });
 
       if (!city) {
         return res.json({ msg: 'Can not find existing city' });
       }
 
-      const deletedcity = await City.destroy();
+      const deletedcity = await city.destroy();
 
-      return res.json({ city: deletedcity });
+      return res.json({ city: deletedcity, msg: 'The city has successfully been deleted' });
     } catch (e) {
       return res.json({
         msg: 'fail to read',

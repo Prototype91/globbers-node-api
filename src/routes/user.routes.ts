@@ -31,19 +31,10 @@ router.get(
   userHandler.read
 );
 
-// GET user's countries
-router.get(
-  RoutePaths.UserCountries,
-  userSchema.checkIdParam(),
-  errorHandlerMiddleware.handleValidationError,
-  userHandler.getUserCountries
-);
-
 // UPDATE a user
 router.put(
-  RoutePaths.Id,
-  userSchema.checkIdParam(),
-  errorHandlerMiddleware.handleValidationError,
+  RoutePaths.Default,
+  [errorHandlerMiddleware.handleValidationError, authJwtMiddleware.verifyToken],
   userHandler.update
 );
 

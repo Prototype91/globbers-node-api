@@ -105,26 +105,9 @@ class UserHandler {
     }
   }
 
-  public async getUserCountries(req: Request, res: Response): Promise<unknown> {
+  public async update(req: Request | any, res: Response): Promise<unknown> {
     try {
-      const { id } = req.params;
-      const user = (await User.findOne({
-        where: { id },
-        include: User.associations.countries
-      })) as any;
-      return res.json(user.countries);
-    } catch (e) {
-      return res.json({
-        msg: 'fail to read',
-        status: 500,
-        route: RoutePaths.Id
-      });
-    }
-  }
-
-  public async update(req: Request, res: Response): Promise<unknown> {
-    try {
-      const { id } = req.params;
+      const id = req.userId;
       const user = await User.findOne({ where: { id } });
 
       if (!user) {
@@ -133,7 +116,7 @@ class UserHandler {
 
       const updatedUser = await user.update({ ...req.body });
 
-      return res.json({ user: updatedUser });
+      return res.json({ user: updatedUser, msg: 'The user has successfully been updated' });
     } catch (e) {
       return res.json({
         msg: 'fail to read',
@@ -154,7 +137,7 @@ class UserHandler {
 
       const deletedUser = await user.destroy();
 
-      return res.json({ user: deletedUser, msg: 'Successfully delete user' });
+      return res.json({ user: deletedUser, msg: 'The user has successfully been deleted' });
     } catch (e) {
       return res.json({
         msg: 'fail to read',

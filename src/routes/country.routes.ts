@@ -19,8 +19,7 @@ router.post(
 // GET all countries
 router.get(
   RoutePaths.Default,
-  countrySchema.checkReadCountry(),
-  errorHandlerMiddleware.handleValidationError,
+  [errorHandlerMiddleware.handleValidationError, authJwtMiddleware.verifyToken],
   countryHandler.read
 );
 
@@ -28,7 +27,7 @@ router.get(
 router.get(
   RoutePaths.Id,
   countrySchema.checkIdParam(),
-  errorHandlerMiddleware.handleValidationError,
+  [errorHandlerMiddleware.handleValidationError, authJwtMiddleware.verifyToken],
   countryHandler.readByID
 );
 
@@ -36,7 +35,7 @@ router.get(
 router.put(
   RoutePaths.Id,
   countrySchema.checkIdParam(),
-  errorHandlerMiddleware.handleValidationError,
+  [errorHandlerMiddleware.handleValidationError, authJwtMiddleware.verifyToken],
   countryHandler.update
 );
 
@@ -44,7 +43,7 @@ router.put(
 router.delete(
   RoutePaths.Id,
   countrySchema.checkIdParam(),
-  errorHandlerMiddleware.handleValidationError,
+  [errorHandlerMiddleware.handleValidationError, authJwtMiddleware.verifyToken],
   countryHandler.delete
 );
 
