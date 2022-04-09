@@ -92,6 +92,19 @@ class UserHandler {
       });
   }
 
+  public async read(req: Request, res: Response): Promise<any> {
+    try {
+      const users = await User.findAll();
+      return res.json(users);
+    } catch (e) {
+      return res.json({
+        msg: 'fail to create',
+        status: 500,
+        route: RoutePaths.Default
+      });
+    }
+  }
+
   public async getUserCountries(req: Request, res: Response): Promise<unknown> {
     try {
       const { id } = req.params;

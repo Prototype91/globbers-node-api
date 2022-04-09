@@ -24,6 +24,13 @@ router.post(
   userHandler.Signin
 );
 
+// GET all users
+router.get(
+  RoutePaths.Default,
+  [errorHandlerMiddleware.handleValidationError, authJwtMiddleware.isAdmin],
+  userHandler.read
+);
+
 // GET user's countries
 router.get(
   RoutePaths.UserCountries,
