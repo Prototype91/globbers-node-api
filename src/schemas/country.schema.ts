@@ -1,7 +1,9 @@
 import { body, param, query, ValidationChain } from 'express-validator';
+import schemaErrorHelper from '../services/helpers/schema-error.helper';
+import { User } from '../models/user.model';
 
 class CountrySchema {
-  public checkCreateCountry(): ValidationChain[] {
+  public checkCreateCountry(): ValidationChain[] | any {
     return [
       body('id').optional().isUUID(4).withMessage('The value should be UUID v4'),
       body('name')
@@ -13,7 +15,16 @@ class CountrySchema {
         .notEmpty()
         .withMessage('The country should be linked to a user')
         .isUUID(4)
-        .withMessage('The userId should be a uuid'),
+        .withMessage('The userId should be a uuid')
+        .custom(async value => {
+          if (value) {
+            const user = await User.findByPk(value);
+
+            if (!user) {
+              return Promise.reject('This user does not exist');
+            }
+          }
+        }),
       body('continent')
         .notEmpty()
         .withMessage('The continent value should not be empty')
@@ -31,7 +42,8 @@ class CountrySchema {
       body('wikiDataId')
         .optional()
         .isString()
-        .withMessage('The wikiDataId value should be a string')
+        .withMessage('The wikiDataId value should be a string'),
+      schemaErrorHelper
     ];
   }
 
