@@ -1,6 +1,7 @@
 import { User } from './user.model';
 import { Role } from './role.model';
 import { Country } from './country.model';
+import { City } from './city.model';
 import { TableNames } from '../enums/table-names.enum';
 
 export class Associations {
@@ -17,6 +18,12 @@ export class Associations {
 
     Role.belongsToMany(User, {
       through: TableNames.UserRoles
+    });
+
+    Country.hasMany(City, {
+      sourceKey: 'id',
+      foreignKey: 'countryId',
+      as: 'cities'
     });
   }
 }

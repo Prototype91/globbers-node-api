@@ -25,6 +25,10 @@ City.init(
       type: DataTypes.UUID,
       allowNull: false
     },
+    countryId: {
+      type: DataTypes.UUID,
+      allowNull: false
+    },
     longitude: {
       type: DataTypes.STRING,
       allowNull: false

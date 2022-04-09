@@ -23,6 +23,24 @@ class CountryHandler {
     }
   }
 
+  public async getCities(req: Request | any, res: Response): Promise<unknown> {
+    const userId = req.userId;
+    try {
+      const { id } = req.params;
+      const country = await Country.findOne({
+        where: { id, userId },
+        include: [Country.associations.cities]
+      });
+      res.json(country);
+    } catch (e) {
+      return res.json({
+        msg: 'fail to read',
+        status: 500,
+        route: RoutePaths.CountryCities
+      });
+    }
+  }
+
   public async read(req: Request | any, res: Response): Promise<unknown> {
     const userId = req.userId;
     try {

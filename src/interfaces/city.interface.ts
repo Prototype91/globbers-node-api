@@ -1,6 +1,7 @@
 export interface ICity {
   readonly id?: number;
   readonly userId?: string;
+  readonly countryId?: string;
   readonly countryCode: string;
   readonly latitude: number | string;
   readonly longitude: number | string;

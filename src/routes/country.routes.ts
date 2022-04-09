@@ -23,6 +23,13 @@ router.get(
   countryHandler.read
 );
 
+// GET a country's cities
+router.get(
+    RoutePaths.CountryCities,
+    [errorHandlerMiddleware.handleValidationError, authJwtMiddleware.verifyToken],
+    countryHandler.getCities
+);
+
 // GET a specific country
 router.get(
   RoutePaths.Id,

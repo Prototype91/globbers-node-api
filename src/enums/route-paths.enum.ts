@@ -5,7 +5,7 @@ export enum RoutePaths {
   User = '/user',
   Search = '/search',
   Id = '/:id',
-  UserCountries = '/countries',
+  CountryCities = '/:id/cities',
   AuthSignup = '/auth/signup',
   AuthSignin = '/auth/signin'
 }
