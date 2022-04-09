@@ -26,11 +26,11 @@ City.init(
       allowNull: false
     },
     longitude: {
-      type: DataTypes.DOUBLE,
+      type: DataTypes.STRING,
       allowNull: false
     },
     latitude: {
-      type: DataTypes.DOUBLE,
+      type: DataTypes.STRING,
       allowNull: false
     },
     population: {
