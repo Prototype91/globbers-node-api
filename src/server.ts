@@ -1,4 +1,4 @@
-import mysql from 'mysql2';
+import mysql from 'mysql2/promise';
 import { v4 as uuidv4 } from 'uuid';
 import app from './app';
 import db from './config/database.config';
@@ -6,6 +6,8 @@ import { localPort } from './constants/port.const';
 import { Roles } from './enums/roles.enum';
 import { Associations } from './models/associations';
 import { Role } from './models/role.model';
+import { User } from './models/user.model';
+import bcrypt from 'bcryptjs';
 
 const getRoles = async (): Promise<unknown[]> => {
   return await Role.findAll();
@@ -30,17 +32,42 @@ const start = async () => {
   db.sync({ force: true })
     .then(() => {
       getRoles()
-        .then(res => {
+        .then(async res => {
           if (!res?.length) {
-            Role.create({
+            await Role.create({
               id: uuidv4(),
               name: Roles.User
             });
 
-            Role.create({
+            await Role.create({
               id: uuidv4(),
               name: Roles.Admin
             });
+
+            const adminRole = await Role.findOne({ where: { name: 'admin' } });
+            const userRole = await Role.findOne({ where: { name: 'user' } });
+
+            // seed admin
+            const adminUser = await User.create({
+              id: uuidv4(),
+              email: 'admin@admin.com',
+              lastname: 'Doe',
+              name: 'John',
+              password: bcrypt.hashSync('password', 8),
+              username: 'Admin'
+            });
+            adminUser.setRoles(adminRole);
+
+            // seed user
+            const user = await User.create({
+              id: uuidv4(),
+              email: 'user@user.com',
+              lastname: 'Doe',
+              name: 'John',
+              password: bcrypt.hashSync('password', 8),
+              username: 'User'
+            });
+            user.setRoles(userRole);
           }
         })
         .catch(e => {

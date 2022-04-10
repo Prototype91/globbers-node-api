@@ -42,7 +42,7 @@ router.put(
 router.delete(
   RoutePaths.Id,
   userSchema.checkIdParam(),
-  [errorHandlerMiddleware.handleValidationError, authJwtMiddleware.isAdmin],
+  [errorHandlerMiddleware.handleValidationError, authJwtMiddleware.verifyToken],
   userHandler.delete
 );
 

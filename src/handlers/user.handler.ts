@@ -7,6 +7,7 @@ import { RoutePaths } from '../enums/route-paths.enum';
 import { CustomRequest } from '../interfaces/custom-request.interface';
 import { Role } from '../models/role.model';
 import { User } from '../models/user.model';
+import { Roles } from '../enums/roles.enum';
 
 class UserHandler {
   public async Signup(req: Request, res: Response): Promise<void> {
@@ -127,18 +128,41 @@ class UserHandler {
     }
   }
 
-  public async delete(req: Request, res: Response): Promise<unknown> {
+  public async delete(req: CustomRequest, res: Response): Promise<unknown> {
+    const userId = req.userId;
     try {
       const { id } = req.params;
-      const user = await User.findOne({ where: { id } });
+      const userToDelete = await User.findByPk(id);
 
-      if (!user) {
+      if (!userToDelete) {
         return res.json({ msg: 'Can not find existing user' });
       }
 
-      const deletedUser = await user.destroy();
+      if (userId !== id) {
+        const user = await User.findByPk(userId);
+        const roles = await user?.getRoles();
 
-      return res.json({ user: deletedUser, msg: 'The user has successfully been deleted' });
+        for (const item of roles) {
+          if (item.name === Roles.Admin) {
+            const deletedUser = await userToDelete.destroy();
+
+            return res.json({
+              userToDelete: deletedUser,
+              msg: 'The user has successfully been deleted'
+            });
+          }
+        }
+        return res.status(403).send({
+          msg: 'Require Admin Role!'
+        });
+      } else {
+        const deletedUser = await userToDelete.destroy();
+
+        return res.json({
+          userToDelete: deletedUser,
+          msg: 'The user has successfully been deleted'
+        });
+      }
     } catch (e) {
       return res.json({
         msg: 'fail to read',
