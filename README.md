@@ -10,9 +10,20 @@ Globbers API est une API qui permet de stocker les pays et villes visités par u
 ### API mise en ligne via Heroku à l'adresse suivant :
 - [globbers-node-api](https://globbers-node-api.herokuapp.com/)
 
+### API déployée sur npm :
+- [globbers-node-api](https://www.npmjs.com/package/globbers-node-api)
+- Pour l'utiliser : 
+    - `npm i globbers-node-api`
+    - dans un fichier `index.js` : `const app = require('globbers-node-api');`
+    - créer un fichier `.env` à la racine avec les bonnes données en se basant sur le `.env.example`
+    - `node index.js`
+
 ### Installation des dépendances :
 
 `npm install`
+
+### Database :
+- Créer un fichier `.env` à la racine avec les bonnes données en se basant sur le `.env.example`
 
 ### Lancement du projet :
 
@@ -25,7 +36,7 @@ Globbers API est une API qui permet de stocker les pays et villes visités par u
 ### Features :
 
 #### Users
-- Insription et connexion d'un utilisateur (avec gestion du role admin / user)
+- Inscription et connexion d'un utilisateur (avec gestion du role admin / user)
 - Supprimer un utilisateur (uniquement pour les admins)
 - Voir tous les utilisateurs (uniquement pour les admins)
 - Toutes les routes sont protégées avec un JWT.
@@ -83,7 +94,6 @@ Globbers API est une API qui permet de stocker les pays et villes visités par u
 - [uuid](https://www.npmjs.com/package/uuid)
 
 - [jest](https://www.npmjs.com/package/jest)
-- [supertest](https://www.npmjs.com/package/supertest)
 
 - [axios](https://www.npmjs.com/package/axios)
 - [country-list-js](https://www.npmjs.com/package/country-list-js)
