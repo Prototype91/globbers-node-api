@@ -33,6 +33,10 @@ Globbers API est une API qui permet de stocker les pays et villes visités par u
 
 `npm run test`
 
+### Collections Postman et Insomnia
+
+- Les collections sont disponibles dans le dossier `./src/collections`
+
 ### Features :
 
 #### Users
@@ -51,7 +55,7 @@ Globbers API est une API qui permet de stocker les pays et villes visités par u
 #### Cities
 - Ajouter une ville
 - Supprimer une ville (uniquement si elle m'appartient)
-- Voir toutes les ville que j'ai visitées
+- Voir toutes les villes que j'ai visitées
 - Modifier une ville (uniquement si elle m'appartient)
 - Voir les informations d'une ville que j'ai visitée
 
@@ -77,7 +81,7 @@ Globbers API est une API qui permet de stocker les pays et villes visités par u
 
 ## Middlewares :
 
-- `AuthJwtMiddleware` : Ce middleware nous sert à détecter si un token valide nous ai envoyé pour la sécurité de l'application ainsi qu'a détécter si l'utilisateur est un simple user ou un admin (selon son role, des actions lui sont permises).
+- `AuthJwtMiddleware` : Ce middleware nous sert à détecter si un token valide nous ai envoyé pour la sécurité de l'application ainsi qu'à détecter si l'utilisateur est un simple user ou un admin (selon son role, des actions lui sont permises).
 
 - `VerifySignUpMiddleware` : Ce middleware nous permet de checker lors du signup si le role donné existe, s'il n'existe pas, une erreur est retournée.
 
