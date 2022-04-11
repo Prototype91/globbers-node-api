@@ -1,32 +1,30 @@
 {
   "_type": "export",
   "__export_format": 4,
-  "__export_date": "2022-04-09T18:09:39.771Z",
+  "__export_date": "2022-04-11T10:18:36.880Z",
   "__export_source": "insomnia.desktop.app:v2022.2.1",
   "resources": [
     {
-      "_id": "req_174b24e260bb4122b0a6c07e1eab9609",
-      "parentId": "fld_fbbc039c754041969dbfeaf371be1d87",
-      "modified": 1649527728437,
-      "created": 1649351316740,
-      "url": "http://localhost:3000/user/auth/signin",
-      "name": "SignIn",
+      "_id": "req_cfd516edb7dd4f4d8e6e4943019b8744",
+      "parentId": "fld_34008e80ed1a4dc6b46e1669a7c9e342",
+      "modified": 1649520938326,
+      "created": 1649520347262,
+      "url": "http://localhost:3000/country/1f5be59a-82d5-4873-9000-4a7056acba41/cities",
+      "name": "GET Country cities",
       "description": "",
-      "method": "POST",
-      "body": {
-        "mimeType": "application/json",
-        "text": "{\n\t\"username\": \"Prototype91\",\n\t\"password\": \"password\"\n}"
-      },
+      "method": "GET",
+      "body": {},
       "parameters": [],
       "headers": [
         {
-          "name": "Content-Type",
-          "value": "application/json",
-          "id": "pair_bab237bbfac94758a1151411e5f91c1a"
+          "id": "pair_b4ce78fec3e541d48d78e05cb3244258",
+          "name": "x-access-token",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjI2NTE2YTY3LTAwMDctNGMxNC1iNWRkLWQ4MTk1YWYzNjY3ZSIsImlhdCI6MTY0OTUyMDg4NiwiZXhwIjoxNjQ5NjA3Mjg2fQ.M3lK6BIfvb9_1R3HT-LvbVEYpxMAT4sSUtcMMQM31V8",
+          "description": ""
         }
       ],
       "authentication": {},
-      "metaSortKey": -1649351316740,
+      "metaSortKey": -1649520347262,
       "isPrivate": false,
       "settingStoreCookies": true,
       "settingSendCookies": true,
@@ -37,15 +35,27 @@
       "_type": "request"
     },
     {
-      "_id": "fld_fbbc039c754041969dbfeaf371be1d87",
-      "parentId": "wrk_1e452ccb1c2a49f1b4d15b4b4be14dc6",
-      "modified": 1648997342140,
-      "created": 1648997342140,
-      "name": "Auth",
+      "_id": "fld_34008e80ed1a4dc6b46e1669a7c9e342",
+      "parentId": "fld_86f610f925dd4f8f9dc57565d56cb4a8",
+      "modified": 1649667524691,
+      "created": 1648815796542,
+      "name": "Country",
       "description": "",
       "environment": {},
       "environmentPropertyOrder": null,
-      "metaSortKey": -1648997342140,
+      "metaSortKey": -1648997342290,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_86f610f925dd4f8f9dc57565d56cb4a8",
+      "parentId": "wrk_1e452ccb1c2a49f1b4d15b4b4be14dc6",
+      "modified": 1649667507307,
+      "created": 1649667507307,
+      "name": "Local",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1649667507307,
       "_type": "request_group"
     },
     {
@@ -59,138 +69,159 @@
       "_type": "workspace"
     },
     {
-      "_id": "req_3e0d14d417564e06b15de87511d67a4f",
-      "parentId": "fld_fbbc039c754041969dbfeaf371be1d87",
-      "modified": 1649527725968,
-      "created": 1648997355307,
-      "url": "http://localhost:3000/user/auth/signup",
-      "name": "Signup",
-      "description": "",
-      "method": "POST",
-      "body": {
-        "mimeType": "application/json",
-        "text": "{\n\t\"name\": \"Dylan\",\n\t\"lastname\": \"Lecomte\",\n\t\"username\": \"Prototype91\",\n\t\"password\": \"password\",\n\t\"email\": \"lecomtedylan@rocketmail.com\",\n\t\"role\": \"admin\"\n}"
-      },
-      "parameters": [],
-      "headers": [
-        {
-          "name": "Content-Type",
-          "value": "application/json",
-          "id": "pair_e58c6f9a6c014a76aeb431a29c8cb253"
-        }
-      ],
-      "authentication": {},
-      "metaSortKey": -1648997355307,
-      "isPrivate": false,
-      "settingStoreCookies": true,
-      "settingSendCookies": true,
-      "settingDisableRenderRequestBody": false,
-      "settingEncodeUrl": true,
-      "settingRebuildPath": true,
-      "settingFollowRedirects": "global",
-      "_type": "request"
-    },
-    {
-      "_id": "req_1baaefbe621d476e87ed709af0ae7a42",
-      "parentId": "fld_e87a10f9b2964e18b54934079571a53d",
-      "modified": 1649515813295,
-      "created": 1649507171135,
-      "url": "http://localhost:3000/user",
-      "name": "GET Users",
+      "_id": "req_20809f5ca0254aa489f986de4943bac5",
+      "parentId": "fld_34008e80ed1a4dc6b46e1669a7c9e342",
+      "modified": 1649515979799,
+      "created": 1648816055328,
+      "url": "http://localhost:3000/country/4f181bda-0ae6-4857-a209-210093a203cb",
+      "name": "GET Country",
       "description": "",
       "method": "GET",
       "body": {},
       "parameters": [],
       "headers": [
         {
-          "id": "pair_1351e2c4331348de96eb8adec12092d3",
-          "name": "x-access-token",
-          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjhkNDZhM2Y2LTkwYjgtNDkzNy1hYTI5LTcxOWVhMjlhNDYwNiIsImlhdCI6MTY0OTUxNTc3NiwiZXhwIjoxNjQ5NjAyMTc2fQ.or1AAZhc_y5kXPWJN49f2ou2nIjGm113HaRrhn8r-LQ",
-          "description": ""
-        }
-      ],
-      "authentication": {},
-      "metaSortKey": -1649507171135,
-      "isPrivate": false,
-      "settingStoreCookies": true,
-      "settingSendCookies": true,
-      "settingDisableRenderRequestBody": false,
-      "settingEncodeUrl": true,
-      "settingRebuildPath": true,
-      "settingFollowRedirects": "global",
-      "_type": "request"
-    },
-    {
-      "_id": "fld_e87a10f9b2964e18b54934079571a53d",
-      "parentId": "wrk_1e452ccb1c2a49f1b4d15b4b4be14dc6",
-      "modified": 1648815809194,
-      "created": 1648815809194,
-      "name": "User",
-      "description": "",
-      "environment": {},
-      "environmentPropertyOrder": null,
-      "metaSortKey": -1648815809194,
-      "_type": "request_group"
-    },
-    {
-      "_id": "req_b3da53595c614aaf957ae00732c11fd2",
-      "parentId": "fld_e87a10f9b2964e18b54934079571a53d",
-      "modified": 1649506164605,
-      "created": 1648919700148,
-      "url": "http://localhost:3000/user/aea78d3c-8cb9-43a8-9018-d2a4f7be14a2",
-      "name": "DELETE User",
-      "description": "",
-      "method": "DELETE",
-      "body": {},
-      "parameters": [],
-      "headers": [
-        {
-          "id": "pair_46ef95f6ae7642eda3881ec107fbc9ab",
-          "name": "x-access-token",
-          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE2ODYzYjhlLTc5OGEtNDRhYi04NjRiLTVkYTIwMGZjODgyNiIsImlhdCI6MTY0OTUwNjEwNiwiZXhwIjoxNjQ5NTkyNTA2fQ.6VWQSCv1kQku6ynw66SxLRyxLBJJ9BeZuPbazLDwD_8",
-          "description": ""
-        }
-      ],
-      "authentication": {},
-      "metaSortKey": -1648919700148,
-      "isPrivate": false,
-      "settingStoreCookies": true,
-      "settingSendCookies": true,
-      "settingDisableRenderRequestBody": false,
-      "settingEncodeUrl": true,
-      "settingRebuildPath": true,
-      "settingFollowRedirects": "global",
-      "_type": "request"
-    },
-    {
-      "_id": "req_d0bd6fc6427a442f9d86146bcbbd8911",
-      "parentId": "fld_e87a10f9b2964e18b54934079571a53d",
-      "modified": 1649527732430,
-      "created": 1648919604965,
-      "url": "http://localhost:3000/user",
-      "name": "PUT User",
-      "description": "",
-      "method": "PUT",
-      "body": {
-        "mimeType": "application/json",
-        "text": "{\n\t\"email\": \"hattab_sami@yahoo.fr\"\n}"
-      },
-      "parameters": [],
-      "headers": [
-        {
-          "name": "Content-Type",
-          "value": "application/json",
-          "id": "pair_8c6dcfc3b3db40efb5a7028a3ac54108"
-        },
-        {
-          "id": "pair_14efbebee9124b6dbc89561bb94bc290",
+          "id": "pair_e6633230271a4b9385e36c5493813ac9",
           "name": "x-access-token",
           "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImI1OGFjNTYyLTY5ZTgtNDI2MS04Mzg5LTk0Njc3ZWRmNmE2NSIsImlhdCI6MTY0OTUxNTg5MiwiZXhwIjoxNjQ5NjAyMjkyfQ.ca4ukak7wPlHlZwA2ptaFRhAUcTtlIKt3MJBKkmYdSM",
           "description": ""
         }
       ],
       "authentication": {},
-      "metaSortKey": -1648919604965,
+      "metaSortKey": -1648816055328,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_abbecb767ae74229902d7f1db3d42315",
+      "parentId": "fld_34008e80ed1a4dc6b46e1669a7c9e342",
+      "modified": 1649516027500,
+      "created": 1648816025163,
+      "url": "http://localhost:3000/country/4f181bda-0ae6-4857-a209-210093a203cb",
+      "name": "DELETE Country",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_9942f8fb2afb4f5991b28dba4d233a47",
+          "name": "x-access-token",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImI1OGFjNTYyLTY5ZTgtNDI2MS04Mzg5LTk0Njc3ZWRmNmE2NSIsImlhdCI6MTY0OTUxNTg5MiwiZXhwIjoxNjQ5NjAyMjkyfQ.ca4ukak7wPlHlZwA2ptaFRhAUcTtlIKt3MJBKkmYdSM",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1648816025163,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_aaa506fb16794192af2a981cf4a24c88",
+      "parentId": "fld_34008e80ed1a4dc6b46e1669a7c9e342",
+      "modified": 1649516000258,
+      "created": 1648815920947,
+      "url": "http://localhost:3000/country/4f181bda-0ae6-4857-a209-210093a203cb",
+      "name": "PUT Country",
+      "description": "",
+      "method": "PUT",
+      "body": { "mimeType": "application/json", "text": "{\n\t\"name\": \"New Country Name\"\n}" },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_ad1a29a608ac407e874f959f187c5bb1"
+        },
+        {
+          "id": "pair_3038041e7d004f9c96d6cf22af3d9047",
+          "name": "x-access-token",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImI1OGFjNTYyLTY5ZTgtNDI2MS04Mzg5LTk0Njc3ZWRmNmE2NSIsImlhdCI6MTY0OTUxNTg5MiwiZXhwIjoxNjQ5NjAyMjkyfQ.ca4ukak7wPlHlZwA2ptaFRhAUcTtlIKt3MJBKkmYdSM",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1648815920947,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_98c87b4ec09c4470926a45fc8acd35d0",
+      "parentId": "fld_34008e80ed1a4dc6b46e1669a7c9e342",
+      "modified": 1649520915025,
+      "created": 1648815865947,
+      "url": "http://localhost:3000/country",
+      "name": "POST Country",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"name\": \"Canada\",\n\t\"continent\": \"Amerique\",\n\t\"code\": \"CA\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_33bfbf3194924296bb2400783f7fc733"
+        },
+        {
+          "id": "pair_acb24a598208415390a48b2b546c8b6b",
+          "name": "x-access-token",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjI2NTE2YTY3LTAwMDctNGMxNC1iNWRkLWQ4MTk1YWYzNjY3ZSIsImlhdCI6MTY0OTUyMDg4NiwiZXhwIjoxNjQ5NjA3Mjg2fQ.M3lK6BIfvb9_1R3HT-LvbVEYpxMAT4sSUtcMMQM31V8",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1648815865947,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_a943746725334a44a0c9aa46b206167d",
+      "parentId": "fld_34008e80ed1a4dc6b46e1669a7c9e342",
+      "modified": 1649515931720,
+      "created": 1648815830411,
+      "url": "http://localhost:3000/country",
+      "name": "Get Countries",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_8528081863d5445fa68d45b1f007ea5f",
+          "name": "x-access-token",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImI1OGFjNTYyLTY5ZTgtNDI2MS04Mzg5LTk0Njc3ZWRmNmE2NSIsImlhdCI6MTY0OTUxNTg5MiwiZXhwIjoxNjQ5NjAyMjkyfQ.ca4ukak7wPlHlZwA2ptaFRhAUcTtlIKt3MJBKkmYdSM",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1648815830411,
       "isPrivate": false,
       "settingStoreCookies": true,
       "settingSendCookies": true,
@@ -237,14 +268,14 @@
     },
     {
       "_id": "fld_8b6c0f99c0634b72af8693a8bda368f4",
-      "parentId": "wrk_1e452ccb1c2a49f1b4d15b4b4be14dc6",
-      "modified": 1648815804499,
+      "parentId": "fld_86f610f925dd4f8f9dc57565d56cb4a8",
+      "modified": 1649667520439,
       "created": 1648815804499,
       "name": "City",
       "description": "",
       "environment": {},
       "environmentPropertyOrder": null,
-      "metaSortKey": -1648815804499,
+      "metaSortKey": -1648997342240,
       "_type": "request_group"
     },
     {
@@ -340,7 +371,7 @@
     {
       "_id": "req_6d0c38c81bcd4708aa5c824efed4c135",
       "parentId": "fld_8b6c0f99c0634b72af8693a8bda368f4",
-      "modified": 1649517172077,
+      "modified": 1649520928668,
       "created": 1649516065270,
       "url": "http://localhost:3000/city",
       "name": "POST City",
@@ -348,7 +379,7 @@
       "method": "POST",
       "body": {
         "mimeType": "application/json",
-        "text": "{\n    \"city\": \"Montreal Metropolitan Community\",\n    \"countryName\": \"Canada\",\n    \"countryCode\": \"CA\",\n    \"latitude\": \"45.56\",\n    \"longitude\": \"-73.66\",\n    \"name\": \"Montreal Metropolitan Community\",\n    \"population\": 3979402,\n    \"region\": \"Quebec\",\n    \"regionCode\": \"QC\",\n    \"type\": \"ADM2\",\n    \"wikiDataId\": \"Q656150\"\n}"
+        "text": "{\n    \"city\": \"Montreal Metropolitan Community\",\n\t\t\"countryId\": \"1f5be59a-82d5-4873-9000-4a7056acba41\",\n    \"countryName\": \"Canada\",\n    \"countryCode\": \"CA\",\n    \"latitude\": \"45.56\",\n    \"longitude\": \"-73.66\",\n    \"name\": \"Montreal Metropolitan Community\",\n    \"population\": 3979402,\n    \"region\": \"Quebec\",\n    \"regionCode\": \"QC\",\n    \"type\": \"ADM2\",\n    \"wikiDataId\": \"Q656150\"\n}"
       },
       "parameters": [],
       "headers": [
@@ -360,7 +391,7 @@
         {
           "id": "pair_2cc4fcf28cf04a1b9a54def56efd73e3",
           "name": "x-access-token",
-          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQxYWIyNjAyLTdiYzctNGJhYS1hN2ZmLWE0YTgwNzMxOTg1YSIsImlhdCI6MTY0OTUxNzE1OCwiZXhwIjoxNjQ5NjAzNTU4fQ.d4QShZv8m8YG-ve3NQW6pkZsdQM1ymRFOvhkPZeShJ4",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjI2NTE2YTY3LTAwMDctNGMxNC1iNWRkLWQ4MTk1YWYzNjY3ZSIsImlhdCI6MTY0OTUyMDg4NiwiZXhwIjoxNjQ5NjA3Mjg2fQ.M3lK6BIfvb9_1R3HT-LvbVEYpxMAT4sSUtcMMQM31V8",
           "description": ""
         }
       ],
@@ -376,26 +407,26 @@
       "_type": "request"
     },
     {
-      "_id": "req_20809f5ca0254aa489f986de4943bac5",
-      "parentId": "fld_34008e80ed1a4dc6b46e1669a7c9e342",
-      "modified": 1649515979799,
-      "created": 1648816055328,
-      "url": "http://localhost:3000/country/4f181bda-0ae6-4857-a209-210093a203cb",
-      "name": "GET Country",
+      "_id": "req_1baaefbe621d476e87ed709af0ae7a42",
+      "parentId": "fld_e87a10f9b2964e18b54934079571a53d",
+      "modified": 1649600701954,
+      "created": 1649507171135,
+      "url": "http://localhost:3000/user",
+      "name": "GET Users",
       "description": "",
       "method": "GET",
       "body": {},
       "parameters": [],
       "headers": [
         {
-          "id": "pair_e6633230271a4b9385e36c5493813ac9",
+          "id": "pair_1351e2c4331348de96eb8adec12092d3",
           "name": "x-access-token",
-          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImI1OGFjNTYyLTY5ZTgtNDI2MS04Mzg5LTk0Njc3ZWRmNmE2NSIsImlhdCI6MTY0OTUxNTg5MiwiZXhwIjoxNjQ5NjAyMjkyfQ.ca4ukak7wPlHlZwA2ptaFRhAUcTtlIKt3MJBKkmYdSM",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMwOGFhYmZjLTM4YzMtNDJjYS1hNGFlLTZlNjE3MmYzZTlhZSIsImlhdCI6MTY0OTYwMDY4NywiZXhwIjoxNjQ5Njg3MDg3fQ.PREQlLL-32gZHyK1wdJOHOQBublewodHQbghCUjrjJg",
           "description": ""
         }
       ],
       "authentication": {},
-      "metaSortKey": -1648816055328,
+      "metaSortKey": -1649507171135,
       "isPrivate": false,
       "settingStoreCookies": true,
       "settingSendCookies": true,
@@ -406,38 +437,38 @@
       "_type": "request"
     },
     {
-      "_id": "fld_34008e80ed1a4dc6b46e1669a7c9e342",
-      "parentId": "wrk_1e452ccb1c2a49f1b4d15b4b4be14dc6",
-      "modified": 1648815796542,
-      "created": 1648815796542,
-      "name": "Country",
+      "_id": "fld_e87a10f9b2964e18b54934079571a53d",
+      "parentId": "fld_86f610f925dd4f8f9dc57565d56cb4a8",
+      "modified": 1649667514139,
+      "created": 1648815809194,
+      "name": "User",
       "description": "",
       "environment": {},
       "environmentPropertyOrder": null,
-      "metaSortKey": -1648815796542,
+      "metaSortKey": -1648997342190,
       "_type": "request_group"
     },
     {
-      "_id": "req_abbecb767ae74229902d7f1db3d42315",
-      "parentId": "fld_34008e80ed1a4dc6b46e1669a7c9e342",
-      "modified": 1649516027500,
-      "created": 1648816025163,
-      "url": "http://localhost:3000/country/4f181bda-0ae6-4857-a209-210093a203cb",
-      "name": "DELETE Country",
+      "_id": "req_b3da53595c614aaf957ae00732c11fd2",
+      "parentId": "fld_e87a10f9b2964e18b54934079571a53d",
+      "modified": 1649600712242,
+      "created": 1648919700148,
+      "url": "http://localhost:3000/user/af8c5d8e-bd7f-43d8-8161-b269182dc3fc",
+      "name": "DELETE User",
       "description": "",
       "method": "DELETE",
       "body": {},
       "parameters": [],
       "headers": [
         {
-          "id": "pair_9942f8fb2afb4f5991b28dba4d233a47",
+          "id": "pair_46ef95f6ae7642eda3881ec107fbc9ab",
           "name": "x-access-token",
-          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImI1OGFjNTYyLTY5ZTgtNDI2MS04Mzg5LTk0Njc3ZWRmNmE2NSIsImlhdCI6MTY0OTUxNTg5MiwiZXhwIjoxNjQ5NjAyMjkyfQ.ca4ukak7wPlHlZwA2ptaFRhAUcTtlIKt3MJBKkmYdSM",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMwOGFhYmZjLTM4YzMtNDJjYS1hNGFlLTZlNjE3MmYzZTlhZSIsImlhdCI6MTY0OTYwMDY4NywiZXhwIjoxNjQ5Njg3MDg3fQ.PREQlLL-32gZHyK1wdJOHOQBublewodHQbghCUjrjJg",
           "description": ""
         }
       ],
       "authentication": {},
-      "metaSortKey": -1648816025163,
+      "metaSortKey": -1648919700148,
       "isPrivate": false,
       "settingStoreCookies": true,
       "settingSendCookies": true,
@@ -448,69 +479,34 @@
       "_type": "request"
     },
     {
-      "_id": "req_aaa506fb16794192af2a981cf4a24c88",
-      "parentId": "fld_34008e80ed1a4dc6b46e1669a7c9e342",
-      "modified": 1649516000258,
-      "created": 1648815920947,
-      "url": "http://localhost:3000/country/4f181bda-0ae6-4857-a209-210093a203cb",
-      "name": "PUT Country",
+      "_id": "req_d0bd6fc6427a442f9d86146bcbbd8911",
+      "parentId": "fld_e87a10f9b2964e18b54934079571a53d",
+      "modified": 1649601407917,
+      "created": 1648919604965,
+      "url": "http://localhost:3000/user",
+      "name": "PUT User",
       "description": "",
       "method": "PUT",
-      "body": { "mimeType": "application/json", "text": "{\n\t\"name\": \"New Country Name\"\n}" },
-      "parameters": [],
-      "headers": [
-        {
-          "name": "Content-Type",
-          "value": "application/json",
-          "id": "pair_ad1a29a608ac407e874f959f187c5bb1"
-        },
-        {
-          "id": "pair_3038041e7d004f9c96d6cf22af3d9047",
-          "name": "x-access-token",
-          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImI1OGFjNTYyLTY5ZTgtNDI2MS04Mzg5LTk0Njc3ZWRmNmE2NSIsImlhdCI6MTY0OTUxNTg5MiwiZXhwIjoxNjQ5NjAyMjkyfQ.ca4ukak7wPlHlZwA2ptaFRhAUcTtlIKt3MJBKkmYdSM",
-          "description": ""
-        }
-      ],
-      "authentication": {},
-      "metaSortKey": -1648815920947,
-      "isPrivate": false,
-      "settingStoreCookies": true,
-      "settingSendCookies": true,
-      "settingDisableRenderRequestBody": false,
-      "settingEncodeUrl": true,
-      "settingRebuildPath": true,
-      "settingFollowRedirects": "global",
-      "_type": "request"
-    },
-    {
-      "_id": "req_98c87b4ec09c4470926a45fc8acd35d0",
-      "parentId": "fld_34008e80ed1a4dc6b46e1669a7c9e342",
-      "modified": 1649515922006,
-      "created": 1648815865947,
-      "url": "http://localhost:3000/country",
-      "name": "POST Country",
-      "description": "",
-      "method": "POST",
       "body": {
         "mimeType": "application/json",
-        "text": "{\n\t\"name\": \"Canada\",\n\t\"continent\": \"Amerique\",\n\t\"code\": \"CA\"\n}"
+        "text": "{\n\t\"email\": \"hattab_sami@yahoo.fr\"\n}"
       },
       "parameters": [],
       "headers": [
         {
           "name": "Content-Type",
           "value": "application/json",
-          "id": "pair_33bfbf3194924296bb2400783f7fc733"
+          "id": "pair_8c6dcfc3b3db40efb5a7028a3ac54108"
         },
         {
-          "id": "pair_acb24a598208415390a48b2b546c8b6b",
+          "id": "pair_14efbebee9124b6dbc89561bb94bc290",
           "name": "x-access-token",
           "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImI1OGFjNTYyLTY5ZTgtNDI2MS04Mzg5LTk0Njc3ZWRmNmE2NSIsImlhdCI6MTY0OTUxNTg5MiwiZXhwIjoxNjQ5NjAyMjkyfQ.ca4ukak7wPlHlZwA2ptaFRhAUcTtlIKt3MJBKkmYdSM",
           "description": ""
         }
       ],
       "authentication": {},
-      "metaSortKey": -1648815865947,
+      "metaSortKey": -1648919604965,
       "isPrivate": false,
       "settingStoreCookies": true,
       "settingSendCookies": true,
@@ -521,26 +517,72 @@
       "_type": "request"
     },
     {
-      "_id": "req_a943746725334a44a0c9aa46b206167d",
-      "parentId": "fld_34008e80ed1a4dc6b46e1669a7c9e342",
-      "modified": 1649515931720,
-      "created": 1648815830411,
-      "url": "http://localhost:3000/country",
-      "name": "Get Countries",
+      "_id": "req_174b24e260bb4122b0a6c07e1eab9609",
+      "parentId": "fld_fbbc039c754041969dbfeaf371be1d87",
+      "modified": 1649668148172,
+      "created": 1649351316740,
+      "url": "http://localhost:3000/user/auth/signin",
+      "name": "SignIn",
       "description": "",
-      "method": "GET",
-      "body": {},
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"username\": \"Admin\",\n\t\"password\": \"password\"\n}"
+      },
       "parameters": [],
       "headers": [
         {
-          "id": "pair_8528081863d5445fa68d45b1f007ea5f",
-          "name": "x-access-token",
-          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImI1OGFjNTYyLTY5ZTgtNDI2MS04Mzg5LTk0Njc3ZWRmNmE2NSIsImlhdCI6MTY0OTUxNTg5MiwiZXhwIjoxNjQ5NjAyMjkyfQ.ca4ukak7wPlHlZwA2ptaFRhAUcTtlIKt3MJBKkmYdSM",
-          "description": ""
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_bab237bbfac94758a1151411e5f91c1a"
         }
       ],
       "authentication": {},
-      "metaSortKey": -1648815830411,
+      "metaSortKey": -1649351316740,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_fbbc039c754041969dbfeaf371be1d87",
+      "parentId": "fld_86f610f925dd4f8f9dc57565d56cb4a8",
+      "modified": 1649667510576,
+      "created": 1648997342140,
+      "name": "Auth",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1648997342140,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_3e0d14d417564e06b15de87511d67a4f",
+      "parentId": "fld_fbbc039c754041969dbfeaf371be1d87",
+      "modified": 1649668179429,
+      "created": 1648997355307,
+      "url": "http://localhost:3000/user/auth/signup",
+      "name": "Signup",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"name\": \"Dylan\",\n\t\"lastname\": \"Lecomte\",\n\t\"username\": \"Prototype91\",\n\t\"password\": \"password\",\n\t\"email\": \"lecomtedylan@rocketmail.com\",\n\t\"role\": \"user\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_e58c6f9a6c014a76aeb431a29c8cb253"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1648997355307,
       "isPrivate": false,
       "settingStoreCookies": true,
       "settingSendCookies": true,
@@ -553,15 +595,22 @@
     {
       "_id": "req_7144722033364119bdc305d47dc8f6c4",
       "parentId": "fld_cdc38d5649694f31a12986e18eaa71aa",
-      "modified": 1648917227406,
+      "modified": 1649670120383,
       "created": 1648917193210,
-      "url": "https://globbers-node-api.herokuapp.com/country/986ca855-6e5c-4aa8-9262-dd9d1e84795c",
+      "url": "https://globbers-node-api.herokuapp.com/country/6ec1ac91-8934-4512-8087-f4660f934561",
       "name": "GET Country",
       "description": "",
       "method": "GET",
       "body": {},
       "parameters": [],
-      "headers": [],
+      "headers": [
+        {
+          "id": "pair_93bdcf025b8643ccb08aba262fb98f97",
+          "name": "x-access-token",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRiN2ZmZTE4LThiOTUtNGIzNy1iYmZjLWJlNGFhMzkzYTQ4NiIsImlhdCI6MTY0OTY2OTg3MSwiZXhwIjoxNjQ5NzU2MjcxfQ.A7-Ztm-YWSqgIqAgeBmYjHhLEy-hwgEj01mj6trOMH8",
+          "description": ""
+        }
+      ],
       "authentication": {},
       "metaSortKey": -1648816055328,
       "isPrivate": false,
@@ -575,28 +624,47 @@
     },
     {
       "_id": "fld_cdc38d5649694f31a12986e18eaa71aa",
-      "parentId": "wrk_1e452ccb1c2a49f1b4d15b4b4be14dc6",
-      "modified": 1648917193202,
+      "parentId": "fld_de9b2f8bade0472a853e2d471d56ad6d",
+      "modified": 1649667978218,
       "created": 1648917193202,
-      "name": "Heroku Country",
+      "name": "Country Heroku",
       "description": "",
       "environment": {},
       "environmentPropertyOrder": null,
-      "metaSortKey": -1648336664662,
+      "metaSortKey": -1648906575867,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_de9b2f8bade0472a853e2d471d56ad6d",
+      "parentId": "wrk_1e452ccb1c2a49f1b4d15b4b4be14dc6",
+      "modified": 1649667485590,
+      "created": 1649667485590,
+      "name": "Heroku",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1649667485590,
       "_type": "request_group"
     },
     {
       "_id": "req_425d642c85cc4d2bba51dcfa0bb39287",
       "parentId": "fld_cdc38d5649694f31a12986e18eaa71aa",
-      "modified": 1648917232832,
+      "modified": 1649670273211,
       "created": 1648917193208,
-      "url": "https://globbers-node-api.herokuapp.com/country/fad580d4-25e4-40bc-b1cc-08836c2ef057",
+      "url": "https://globbers-node-api.herokuapp.com/country/6ec1ac91-8934-4512-8087-f4660f934561",
       "name": "DELETE Country",
       "description": "",
       "method": "DELETE",
       "body": {},
       "parameters": [],
-      "headers": [],
+      "headers": [
+        {
+          "id": "pair_9944912c99cf4db291b3944493169c7d",
+          "name": "x-access-token",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRiN2ZmZTE4LThiOTUtNGIzNy1iYmZjLWJlNGFhMzkzYTQ4NiIsImlhdCI6MTY0OTY2OTg3MSwiZXhwIjoxNjQ5NzU2MjcxfQ.A7-Ztm-YWSqgIqAgeBmYjHhLEy-hwgEj01mj6trOMH8",
+          "description": ""
+        }
+      ],
       "authentication": {},
       "metaSortKey": -1648816025163,
       "isPrivate": false,
@@ -611,19 +679,28 @@
     {
       "_id": "req_9a504060b2594e0abf818bd967e8ca6a",
       "parentId": "fld_cdc38d5649694f31a12986e18eaa71aa",
-      "modified": 1648917237829,
+      "modified": 1649670268052,
       "created": 1648917193207,
-      "url": "https://globbers-node-api.herokuapp.com/country/fad580d4-25e4-40bc-b1cc-08836c2ef057",
+      "url": "https://globbers-node-api.herokuapp.com/country/6ec1ac91-8934-4512-8087-f4660f934561",
       "name": "PUT Country",
       "description": "",
       "method": "PUT",
-      "body": { "mimeType": "application/json", "text": "{\n\t\"visited\": false\n}" },
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"name\": \"Alaska\",\n\t\"continent\": \"Amérique du nord\",\n\t\"code\": \"AK\"\n}"
+      },
       "parameters": [],
       "headers": [
         {
           "name": "Content-Type",
           "value": "application/json",
           "id": "pair_ad1a29a608ac407e874f959f187c5bb1"
+        },
+        {
+          "id": "pair_eb79b6f3b1cd4a66a657e8308b1715ec",
+          "name": "x-access-token",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRiN2ZmZTE4LThiOTUtNGIzNy1iYmZjLWJlNGFhMzkzYTQ4NiIsImlhdCI6MTY0OTY2OTg3MSwiZXhwIjoxNjQ5NzU2MjcxfQ.A7-Ztm-YWSqgIqAgeBmYjHhLEy-hwgEj01mj6trOMH8",
+          "description": ""
         }
       ],
       "authentication": {},
@@ -640,7 +717,7 @@
     {
       "_id": "req_084758da733e4f9eac73f57fa242904e",
       "parentId": "fld_cdc38d5649694f31a12986e18eaa71aa",
-      "modified": 1649353133699,
+      "modified": 1649670269352,
       "created": 1648917193205,
       "url": "https://globbers-node-api.herokuapp.com/country",
       "name": "POST Country",
@@ -648,7 +725,7 @@
       "method": "POST",
       "body": {
         "mimeType": "application/json",
-        "text": "{\n\t\"name\": \"Canada\",\n\t\"visited\": true\n}"
+        "text": "{\n\t\"name\": \"Canada\",\n\t\"continent\": \"Amérique du nord\",\n\t\"code\": \"CA\"\n}"
       },
       "parameters": [],
       "headers": [
@@ -656,6 +733,12 @@
           "name": "Content-Type",
           "value": "application/json",
           "id": "pair_33bfbf3194924296bb2400783f7fc733"
+        },
+        {
+          "id": "pair_9259b717e27d41e094012f3dee7d5610",
+          "name": "x-access-token",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRiN2ZmZTE4LThiOTUtNGIzNy1iYmZjLWJlNGFhMzkzYTQ4NiIsImlhdCI6MTY0OTY2OTg3MSwiZXhwIjoxNjQ5NzU2MjcxfQ.A7-Ztm-YWSqgIqAgeBmYjHhLEy-hwgEj01mj6trOMH8",
+          "description": ""
         }
       ],
       "authentication": {},
@@ -672,7 +755,7 @@
     {
       "_id": "req_a44f1cd5992e427a842eabb46d337fca",
       "parentId": "fld_cdc38d5649694f31a12986e18eaa71aa",
-      "modified": 1648917243872,
+      "modified": 1649670148155,
       "created": 1648917193204,
       "url": "https://globbers-node-api.herokuapp.com/country",
       "name": "Get Countries",
@@ -680,9 +763,377 @@
       "method": "GET",
       "body": {},
       "parameters": [],
-      "headers": [],
+      "headers": [
+        {
+          "id": "pair_c07306e3103b429ca09a84904d01686b",
+          "name": "x-access-token",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRiN2ZmZTE4LThiOTUtNGIzNy1iYmZjLWJlNGFhMzkzYTQ4NiIsImlhdCI6MTY0OTY2OTg3MSwiZXhwIjoxNjQ5NzU2MjcxfQ.A7-Ztm-YWSqgIqAgeBmYjHhLEy-hwgEj01mj6trOMH8",
+          "description": ""
+        }
+      ],
       "authentication": {},
       "metaSortKey": -1648815830411,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_49c674c1afb94a7dab15ddf839ecbe15",
+      "parentId": "fld_1b7b2a389dc0421289148f6f614d4f6f",
+      "modified": 1649670303602,
+      "created": 1649667618591,
+      "url": "https://globbers-node-api.herokuapp.com/city/0a50adcc-92dd-4fc7-8a97-6d6a9ec43221",
+      "name": "PUT City",
+      "description": "",
+      "method": "PUT",
+      "body": { "mimeType": "application/json", "text": "{\n\t\"name\": \"new city name\"\n}" },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_d3c27c99dc584ba2b4444db6c14aab14"
+        },
+        {
+          "id": "pair_3ae821773744444989fbf00837f14d3d",
+          "name": "x-access-token",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRkYTMyYjg2LTY2MGUtNDg2YS04OGY2LWQwMTBkZjI1ZDUwNiIsImlhdCI6MTY0OTUxNjMxOSwiZXhwIjoxNjQ5NjAyNzE5fQ.AdYKxxuM-aGayR2YxLwXTruHlIl0bEl__jC6-hfxUD0",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1649516099420,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_1b7b2a389dc0421289148f6f614d4f6f",
+      "parentId": "fld_de9b2f8bade0472a853e2d471d56ad6d",
+      "modified": 1649667620897,
+      "created": 1649667618566,
+      "name": "City Heroku",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1648906575817,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_a5621dbede3249e887bb82519ecb3b46",
+      "parentId": "fld_1b7b2a389dc0421289148f6f614d4f6f",
+      "modified": 1649667632281,
+      "created": 1649667618588,
+      "url": "https://globbers-node-api.herokuapp.com/city/7701fce4-7db4-4d17-af8b-345b91899bde",
+      "name": "DELETE City",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_60955d6a42d24db591223a7782282212",
+          "name": "x-access-token",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQxYWIyNjAyLTdiYzctNGJhYS1hN2ZmLWE0YTgwNzMxOTg1YSIsImlhdCI6MTY0OTUxNzE1OCwiZXhwIjoxNjQ5NjAzNTU4fQ.d4QShZv8m8YG-ve3NQW6pkZsdQM1ymRFOvhkPZeShJ4",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1649516088903,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_48390211d0534d53bc09e9bd5c2967bf",
+      "parentId": "fld_1b7b2a389dc0421289148f6f614d4f6f",
+      "modified": 1649667637121,
+      "created": 1649667618586,
+      "url": "https://globbers-node-api.herokuapp.com/city/0a50adcc-92dd-4fc7-8a97-6d6a9ec43221",
+      "name": "GET City",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_763191859dcd4434a0947954444270f7",
+          "name": "x-access-token",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRkYTMyYjg2LTY2MGUtNDg2YS04OGY2LWQwMTBkZjI1ZDUwNiIsImlhdCI6MTY0OTUxNjMxOSwiZXhwIjoxNjQ5NjAyNzE5fQ.AdYKxxuM-aGayR2YxLwXTruHlIl0bEl__jC6-hfxUD0",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1649516080991,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_20d628184790496b94c38b88ef26e80e",
+      "parentId": "fld_1b7b2a389dc0421289148f6f614d4f6f",
+      "modified": 1649667641309,
+      "created": 1649667618584,
+      "url": "https://globbers-node-api.herokuapp.com/city",
+      "name": "GET Cities",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_5ea6c3f8c4d844dfa64822960d7b4eb1",
+          "name": "x-access-token",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRkYTMyYjg2LTY2MGUtNDg2YS04OGY2LWQwMTBkZjI1ZDUwNiIsImlhdCI6MTY0OTUxNjMxOSwiZXhwIjoxNjQ5NjAyNzE5fQ.AdYKxxuM-aGayR2YxLwXTruHlIl0bEl__jC6-hfxUD0",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1649516074187,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_9d4ef50912704257b26781344eb901e4",
+      "parentId": "fld_1b7b2a389dc0421289148f6f614d4f6f",
+      "modified": 1649670291487,
+      "created": 1649667618571,
+      "url": "https://globbers-node-api.herokuapp.com/city",
+      "name": "POST City",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n    \"city\": \"Montreal Metropolitan Community\",\n\t\t\"countryId\": \"1f5be59a-82d5-4873-9000-4a7056acba41\",\n    \"countryName\": \"Canada\",\n    \"countryCode\": \"CA\",\n    \"latitude\": \"45.56\",\n    \"longitude\": \"-73.66\",\n    \"name\": \"Montreal Metropolitan Community\",\n    \"population\": 3979402,\n    \"region\": \"Quebec\",\n    \"regionCode\": \"QC\",\n    \"type\": \"ADM2\",\n    \"wikiDataId\": \"Q656150\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_3dff95c2e2df48dd9976de161078bf86"
+        },
+        {
+          "id": "pair_2cc4fcf28cf04a1b9a54def56efd73e3",
+          "name": "x-access-token",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjI2NTE2YTY3LTAwMDctNGMxNC1iNWRkLWQ4MTk1YWYzNjY3ZSIsImlhdCI6MTY0OTUyMDg4NiwiZXhwIjoxNjQ5NjA3Mjg2fQ.M3lK6BIfvb9_1R3HT-LvbVEYpxMAT4sSUtcMMQM31V8",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1649516065270,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_8d5fcc367bb740368c4400d4aea361cf",
+      "parentId": "fld_950dd3e27c594b829ff5eb40856e9b69",
+      "modified": 1649669925142,
+      "created": 1649667538538,
+      "url": "https://globbers-node-api.herokuapp.com/user",
+      "name": "GET Users",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_1351e2c4331348de96eb8adec12092d3",
+          "name": "x-access-token",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRiN2ZmZTE4LThiOTUtNGIzNy1iYmZjLWJlNGFhMzkzYTQ4NiIsImlhdCI6MTY0OTY2OTg3MSwiZXhwIjoxNjQ5NzU2MjcxfQ.A7-Ztm-YWSqgIqAgeBmYjHhLEy-hwgEj01mj6trOMH8",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1649507171135,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_950dd3e27c594b829ff5eb40856e9b69",
+      "parentId": "fld_de9b2f8bade0472a853e2d471d56ad6d",
+      "modified": 1649667541095,
+      "created": 1649667538530,
+      "name": "User Heroku",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1648906575767,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_85033e32276b4697a9b19edee8c06ee0",
+      "parentId": "fld_950dd3e27c594b829ff5eb40856e9b69",
+      "modified": 1649670498979,
+      "created": 1649667538536,
+      "url": "https://globbers-node-api.herokuapp.com/user/4643726c-a99c-4f3e-913c-8d3bcb0deeb3",
+      "name": "DELETE User",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_46ef95f6ae7642eda3881ec107fbc9ab",
+          "name": "x-access-token",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJlZmRlNmE0LWFiYTAtNDY4Ny04Y2JiLTk1MDBlY2FlZjE5YyIsImlhdCI6MTY0OTY2Nzg4NywiZXhwIjoxNjQ5NzU0Mjg3fQ.gO23z1GQqu7IKBkkzMGycSHThlLqYiQJqE_FZZvv7Nw",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1648919700148,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_d6f40be527a84d2dabb62a61a2f417e3",
+      "parentId": "fld_950dd3e27c594b829ff5eb40856e9b69",
+      "modified": 1649669965454,
+      "created": 1649667538533,
+      "url": "https://globbers-node-api.herokuapp.com/user",
+      "name": "PUT User",
+      "description": "",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"email\": \"lecomte_dylan@yahoo.fr\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_8c6dcfc3b3db40efb5a7028a3ac54108"
+        },
+        {
+          "id": "pair_14efbebee9124b6dbc89561bb94bc290",
+          "name": "x-access-token",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRiN2ZmZTE4LThiOTUtNGIzNy1iYmZjLWJlNGFhMzkzYTQ4NiIsImlhdCI6MTY0OTY2OTg3MSwiZXhwIjoxNjQ5NzU2MjcxfQ.A7-Ztm-YWSqgIqAgeBmYjHhLEy-hwgEj01mj6trOMH8",
+          "description": ""
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1648919604965,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_c1dc034dd8d74c1aa80e82037babdb0d",
+      "parentId": "fld_9122da798d4e4a97beb13d9e1ca3605b",
+      "modified": 1649670249153,
+      "created": 1649667407859,
+      "url": "https://globbers-node-api.herokuapp.com/user/auth/signin",
+      "name": "SignIn",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"username\": \"Prototype91\",\n\t\"password\": \"password\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_bab237bbfac94758a1151411e5f91c1a"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1649351316740,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_9122da798d4e4a97beb13d9e1ca3605b",
+      "parentId": "fld_de9b2f8bade0472a853e2d471d56ad6d",
+      "modified": 1649667492336,
+      "created": 1649667407846,
+      "name": "Auth Heroku",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1648906575667,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_904cacc2d4f44c5ba7c3ee670a05c651",
+      "parentId": "fld_9122da798d4e4a97beb13d9e1ca3605b",
+      "modified": 1649670192955,
+      "created": 1649667407853,
+      "url": "https://globbers-node-api.herokuapp.com/user/auth/signup",
+      "name": "Signup",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"name\": \"Dylan\",\n\t\"lastname\": \"Lecomte\",\n\t\"username\": \"Prototype91\",\n\t\"password\": \"password\",\n\t\"email\": \"lecomtedylan@rocketmail.com\",\n\t\"role\": \"user\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_e58c6f9a6c014a76aeb431a29c8cb253"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1648997355307,
       "isPrivate": false,
       "settingStoreCookies": true,
       "settingSendCookies": true,

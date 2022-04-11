@@ -11,10 +11,10 @@ class SearchHandler {
       const name = req.query.name as unknown as string;
       const country = await SearchCountryClient.getCountriesBySearchText(name);
       const response = SearchCountryMapper.mapToCountry(country);
-      return res.json(response);
+      return res.status(200).json(response);
     } catch (error) {
       if (error instanceof Error) {
-        return res.json({
+        return res.status(500).json({
           msg: error.message,
           status: 500,
           route: RoutePaths.Country
@@ -28,10 +28,10 @@ class SearchHandler {
       const name = req.query.name as unknown as string;
       const city = await SearchCityClient.getCitiesBySearchText(name);
       const response = SearchCityMapper.mapToCity(city);
-      return res.json(response);
+      return res.status(200).json(response);
     } catch (error) {
       if (error instanceof Error) {
-        return res.json({
+        return res.status(500).json({
           msg: error.message,
           status: 500,
           route: RoutePaths.City

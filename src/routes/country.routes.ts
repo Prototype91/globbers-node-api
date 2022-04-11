@@ -25,9 +25,9 @@ router.get(
 
 // GET a country's cities
 router.get(
-    RoutePaths.CountryCities,
-    [errorHandlerMiddleware.handleValidationError, authJwtMiddleware.verifyToken],
-    countryHandler.getCities
+  RoutePaths.CountryCities,
+  [errorHandlerMiddleware.handleValidationError, authJwtMiddleware.verifyToken],
+  countryHandler.getCities
 );
 
 // GET a specific country

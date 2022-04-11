@@ -10,9 +10,9 @@ class CityHandler {
     const id = uuidv4();
     try {
       const city = await City.create({ ...req.body, userId, id });
-      return res.json({ city, msg: 'The city has successfully been created' });
+      return res.status(200).json({ city, msg: 'The city has successfully been created' });
     } catch (e) {
-      return res.json({
+      return res.status(500).json({
         msg: 'fail to create',
         status: 500,
         route: RoutePaths.Default
@@ -24,9 +24,9 @@ class CityHandler {
     const userId = req.userId;
     try {
       const countries = await City.findAll({ where: { userId } });
-      return res.json(countries);
+      return res.status(200).json(countries);
     } catch (e) {
-      return res.json({
+      return res.status(500).json({
         msg: 'fail to read',
         status: 500,
         route: RoutePaths.Default
@@ -39,9 +39,9 @@ class CityHandler {
     const { id } = req.params;
     try {
       const city = await City.findOne({ where: { id, userId } });
-      return res.json(city);
+      return res.status(200).json(city);
     } catch (e) {
-      return res.json({
+      return res.status(500).json({
         msg: 'fail to read',
         status: 500,
         route: RoutePaths.Id
@@ -56,14 +56,16 @@ class CityHandler {
       const city = await City.findOne({ where: { id, userId } });
 
       if (!city) {
-        return res.json({ msg: 'Can not find existing city' });
+        return res.status(500).json({ msg: 'Can not find existing city' });
       }
 
       const updatedcity = await city.update({ ...req.body });
 
-      return res.json({ city: updatedcity, msg: 'The city has successfully been updated' });
+      return res
+        .status(200)
+        .json({ city: updatedcity, msg: 'The city has successfully been updated' });
     } catch (e) {
-      return res.json({
+      return res.status(500).json({
         msg: 'fail to read',
         status: 500,
         route: RoutePaths.Id
@@ -77,14 +79,16 @@ class CityHandler {
       const city = await City.findOne({ where: { id, userId } });
 
       if (!city) {
-        return res.json({ msg: 'Can not find existing city' });
+        return res.status(500).json({ msg: 'Can not find existing city' });
       }
 
       const deletedcity = await city.destroy();
 
-      return res.json({ city: deletedcity, msg: 'The city has successfully been deleted' });
+      return res
+        .status(200)
+        .json({ city: deletedcity, msg: 'The city has successfully been deleted' });
     } catch (e) {
-      return res.json({
+      return res.status(500).json({
         msg: 'fail to read',
         status: 500,
         route: RoutePaths.Id

@@ -60,8 +60,15 @@ Globbers API est une API qui permet de stocker les pays et villes visités par u
 - Je peux modifier une ville / pays via les routes `/city/:id` ou `/country/:id` (PUT)
 - Je peux supprimer une ville / pays via les routes `/city/:id` ou `/country/:id` (DELETE)
 
-- Je peux modifier / supprimer les informations de mon compte via la route `/user/:id` (PUT / DELETE)
+- Je peux modifier / supprimer les informations de mon compte via la route `/user/:id` (DELETE) ou `/user` (PUT)
 - Si je suis un utilisateur admin, je peux supprimer n'importe quel compte d'un utilisateur via la route `/user/:id` (DELETE)
+
+
+## Middlewares :
+
+- `AuthJwtMiddleware` : Ce middleware nous sert à détecter si un token valide nous ai envoyé pour la sécurité de l'application ainsi qu'a détécter si l'utilisateur est un simple user ou un admin (selon son role, des actions lui sont permises).
+
+- `VerifySignUpMiddleware` : Ce middleware nous permet de checker lors du signup si le role donné existe, s'il n'existe pas, une erreur est retournée.
 
 ## Technologies utilisées :
 

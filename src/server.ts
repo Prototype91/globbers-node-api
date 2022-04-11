@@ -13,7 +13,7 @@ const getRoles = async (): Promise<unknown[]> => {
   return await Role.findAll();
 };
 
-const start = async () => {
+export const start = async () => {
   const port = process.env.PORT || localPort;
 
   app.listen(port, () => {

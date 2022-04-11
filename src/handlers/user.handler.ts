@@ -3,11 +3,11 @@ import { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 import { v4 as uuidv4 } from 'uuid';
 import { secretKey } from '../constants/secret-key.const';
+import { Roles } from '../enums/roles.enum';
 import { RoutePaths } from '../enums/route-paths.enum';
 import { CustomRequest } from '../interfaces/custom-request.interface';
 import { Role } from '../models/role.model';
 import { User } from '../models/user.model';
-import { Roles } from '../enums/roles.enum';
 
 class UserHandler {
   public async Signup(req: Request, res: Response): Promise<void> {
@@ -97,9 +97,9 @@ class UserHandler {
   public async read(_: Request, res: Response): Promise<unknown> {
     try {
       const users = await User.findAll();
-      return res.json(users);
+      return res.status(200).json(users);
     } catch (e) {
-      return res.json({
+      return res.status(500).json({
         msg: 'fail to create',
         status: 500,
         route: RoutePaths.Default
@@ -113,14 +113,16 @@ class UserHandler {
       const user = await User.findOne({ where: { id } });
 
       if (!user) {
-        return res.json({ msg: 'Can not find existing user' });
+        return res.status(500).json({ msg: 'Can not find existing user' });
       }
 
       const updatedUser = await user.update({ ...req.body });
 
-      return res.json({ user: updatedUser, msg: 'The user has successfully been updated' });
+      return res
+        .status(200)
+        .json({ user: updatedUser, msg: 'The user has successfully been updated' });
     } catch (e) {
-      return res.json({
+      return res.status(500).json({
         msg: 'fail to read',
         status: 500,
         route: RoutePaths.Id
@@ -135,7 +137,7 @@ class UserHandler {
       const userToDelete = await User.findByPk(id);
 
       if (!userToDelete) {
-        return res.json({ msg: 'Can not find existing user' });
+        return res.status(500).json({ msg: 'Can not find existing user' });
       }
 
       if (userId !== id) {
@@ -146,7 +148,7 @@ class UserHandler {
           if (item.name === Roles.Admin) {
             const deletedUser = await userToDelete.destroy();
 
-            return res.json({
+            return res.status(200).json({
               userToDelete: deletedUser,
               msg: 'The user has successfully been deleted'
             });
@@ -158,13 +160,13 @@ class UserHandler {
       } else {
         const deletedUser = await userToDelete.destroy();
 
-        return res.json({
+        return res.status(200).json({
           userToDelete: deletedUser,
           msg: 'The user has successfully been deleted'
         });
       }
     } catch (e) {
-      return res.json({
+      return res.status(500).json({
         msg: 'fail to read',
         status: 500,
         route: RoutePaths.Id

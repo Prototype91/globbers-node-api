@@ -10,9 +10,9 @@ class CountryHandler {
     const userId = req.userId;
     try {
       const country = await Country.create({ ...req.body, userId, id });
-      return res.json({ country, msg: 'The country has successfully been created' });
+      return res.status(200).json({ country, msg: 'The country has successfully been created' });
     } catch (e) {
-      return res.json({
+      return res.status(500).json({
         msg: 'fail to create',
         status: 500,
         route: RoutePaths.Default
@@ -28,9 +28,9 @@ class CountryHandler {
         where: { id, userId },
         include: [Country.associations.cities]
       });
-      res.json(country);
+      res.status(200).json(country);
     } catch (e) {
-      return res.json({
+      return res.status(500).json({
         msg: 'fail to read',
         status: 500,
         route: RoutePaths.CountryCities
@@ -42,9 +42,9 @@ class CountryHandler {
     const userId = req.userId;
     try {
       const countries = await Country.findAll({ where: { userId } });
-      return res.json(countries);
+      return res.status(200).json(countries);
     } catch (e) {
-      return res.json({
+      return res.status(500).json({
         msg: 'fail to read',
         status: 500,
         route: RoutePaths.Default
@@ -57,9 +57,9 @@ class CountryHandler {
     try {
       const { id } = req.params;
       const country = await Country.findOne({ where: { id, userId } });
-      return res.json(country);
+      return res.status(200).json(country);
     } catch (e) {
-      return res.json({
+      return res.status(500).json({
         msg: 'fail to read',
         status: 500,
         route: RoutePaths.Id
@@ -74,17 +74,17 @@ class CountryHandler {
       const country = await Country.findOne({ where: { id, userId } });
 
       if (!country) {
-        return res.json({ msg: 'Can not find existing country' });
+        return res.status(500).json({ msg: 'Can not find existing country' });
       }
 
       const updatedCountry = await country.update({ ...req.body });
 
-      return res.json({
+      return res.status(200).json({
         country: updatedCountry,
         msg: 'The country has successfully been updated'
       });
     } catch (e) {
-      return res.json({
+      return res.status(500).json({
         msg: 'fail to read',
         status: 500,
         route: RoutePaths.Id
@@ -98,17 +98,17 @@ class CountryHandler {
       const country = await Country.findOne({ where: { id, userId } });
 
       if (!country) {
-        return res.json({ msg: 'Can not find existing country' });
+        return res.status(500).json({ msg: 'Can not find existing country' });
       }
 
       const deletedCountry = await country.destroy();
 
-      return res.json({
+      return res.status(200).json({
         country: deletedCountry,
         msg: 'The country has successfully been deleted'
       });
     } catch (e) {
-      return res.json({
+      return res.status(500).json({
         msg: 'fail to read',
         status: 500,
         route: RoutePaths.Id

@@ -5,7 +5,7 @@ class ErrorMiddleware {
   public handleValidationError(req: Request, res: Response, next: NextFunction): unknown {
     const error = validationResult(req);
     if (!error.isEmpty()) {
-      return res.json(error.array()[0]);
+      return res.status(500).json(error.array()[0]);
     }
     next();
   }
