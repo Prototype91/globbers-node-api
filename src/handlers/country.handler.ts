@@ -1,74 +1,101 @@
-import { Request, Response } from 'express';
+import { Response } from 'express';
 import { v4 as uuidv4 } from 'uuid';
 import { RoutePaths } from '../enums/route-paths.enum';
-import { CountryModel } from '../models/country.model';
+import { CustomRequest } from '../interfaces/custom-request.interface';
+import { Country } from '../models/country.model';
 
 class CountryHandler {
-  public async create(req: Request, res: Response): Promise<unknown> {
+  public async create(req: CustomRequest, res: Response): Promise<unknown> {
     const id = uuidv4();
+    const userId = req.userId;
     try {
-      const country = await CountryModel.create({ ...req.body, id });
-      return res.json({ country, msg: 'Successfully create country' });
+      const country = await Country.create({ ...req.body, userId, id });
+      return res.json({ country, msg: 'The country has successfully been created' });
     } catch (e) {
       return res.json({
         msg: 'fail to create',
         status: 500,
-        route: RoutePaths.Default,
+        route: RoutePaths.Default
       });
     }
   }
 
-  public async read(req: Request, res: Response): Promise<unknown> {
+  public async getCities(req: Request | any, res: Response): Promise<unknown> {
+    const userId = req.userId;
     try {
-      const countries = await CountryModel.findAll();
+      const { id } = req.params;
+      const country = await Country.findOne({
+        where: { id, userId },
+        include: [Country.associations.cities]
+      });
+      res.json(country);
+    } catch (e) {
+      return res.json({
+        msg: 'fail to read',
+        status: 500,
+        route: RoutePaths.CountryCities
+      });
+    }
+  }
+
+  public async read(req: CustomRequest, res: Response): Promise<unknown> {
+    const userId = req.userId;
+    try {
+      const countries = await Country.findAll({ where: { userId } });
       return res.json(countries);
     } catch (e) {
       return res.json({
         msg: 'fail to read',
         status: 500,
-        route: RoutePaths.Default,
+        route: RoutePaths.Default
       });
     }
   }
-  public async readByID(req: Request, res: Response): Promise<unknown> {
+
+  public async readByID(req: CustomRequest, res: Response): Promise<unknown> {
+    const userId = req.userId;
     try {
       const { id } = req.params;
-      const country = await CountryModel.findOne({ where: { id } });
+      const country = await Country.findOne({ where: { id, userId } });
       return res.json(country);
     } catch (e) {
       return res.json({
         msg: 'fail to read',
         status: 500,
-        route: RoutePaths.Id,
+        route: RoutePaths.Id
       });
     }
   }
-  public async update(req: Request, res: Response): Promise<unknown> {
+
+  public async update(req: CustomRequest, res: Response): Promise<unknown> {
+    const userId = req.userId;
     try {
       const { id } = req.params;
-      const country = await CountryModel.findOne({ where: { id } });
+      const country = await Country.findOne({ where: { id, userId } });
 
       if (!country) {
         return res.json({ msg: 'Can not find existing country' });
       }
 
-      const updatedCountry = await country.update({
-        visited: !country.getDataValue('visited'),
-      });
+      const updatedCountry = await country.update({ ...req.body });
 
-      return res.json({ country: updatedCountry });
+      return res.json({
+        country: updatedCountry,
+        msg: 'The country has successfully been updated'
+      });
     } catch (e) {
       return res.json({
         msg: 'fail to read',
         status: 500,
-        route: RoutePaths.Id,
+        route: RoutePaths.Id
       });
     }
   }
-  public async delete(req: Request, res: Response): Promise<unknown> {
+  public async delete(req: CustomRequest, res: Response): Promise<unknown> {
+    const userId = req.userId;
     try {
       const { id } = req.params;
-      const country = await CountryModel.findOne({ where: { id } });
+      const country = await Country.findOne({ where: { id, userId } });
 
       if (!country) {
         return res.json({ msg: 'Can not find existing country' });
@@ -76,12 +103,15 @@ class CountryHandler {
 
       const deletedCountry = await country.destroy();
 
-      return res.json({ country: deletedCountry });
+      return res.json({
+        country: deletedCountry,
+        msg: 'The country has successfully been deleted'
+      });
     } catch (e) {
       return res.json({
         msg: 'fail to read',
         status: 500,
-        route: RoutePaths.Id,
+        route: RoutePaths.Id
       });
     }
   }

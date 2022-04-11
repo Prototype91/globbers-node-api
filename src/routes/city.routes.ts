@@ -1,57 +1,50 @@
 import express from 'express';
 import { RoutePaths } from '../enums/route-paths.enum';
-import countryHandler from '../handlers/country.handler';
+import cityHandler from '../handlers/city.handler';
 import errorHandlerMiddleware from '../middlewares/error-handler.middleware';
-import countrySchema from '../schemas/country.schema';
+import citySchema from '..//schemas/city.schema';
 import authJwtMiddleware from '../middlewares/auth-jwt.middleware';
 
-// Country Router
+// City Router
 const router = express.Router();
 
-// POST a country
+// POST a City
 router.post(
   RoutePaths.Default,
-  countrySchema.checkCreateCountry(),
+  citySchema.checkCreateCity(),
   [errorHandlerMiddleware.handleValidationError, authJwtMiddleware.verifyToken],
-  countryHandler.create
+  cityHandler.create
 );
 
-// GET all countries
+// GET all Cities
 router.get(
   RoutePaths.Default,
   [errorHandlerMiddleware.handleValidationError, authJwtMiddleware.verifyToken],
-  countryHandler.read
+  cityHandler.read
 );
 
-// GET a country's cities
-router.get(
-    RoutePaths.CountryCities,
-    [errorHandlerMiddleware.handleValidationError, authJwtMiddleware.verifyToken],
-    countryHandler.getCities
-);
-
-// GET a specific country
+// GET a specific City
 router.get(
   RoutePaths.Id,
-  countrySchema.checkIdParam(),
+  citySchema.checkIdParam(),
   [errorHandlerMiddleware.handleValidationError, authJwtMiddleware.verifyToken],
-  countryHandler.readByID
+  cityHandler.readByID
 );
 
-// UPDATE a country
+// UPDATE a City
 router.put(
   RoutePaths.Id,
-  countrySchema.checkIdParam(),
+  citySchema.checkIdParam(),
   [errorHandlerMiddleware.handleValidationError, authJwtMiddleware.verifyToken],
-  countryHandler.update
+  cityHandler.update
 );
 
-// DELETE a country
+// DELETE a City
 router.delete(
   RoutePaths.Id,
-  countrySchema.checkIdParam(),
+  citySchema.checkIdParam(),
   [errorHandlerMiddleware.handleValidationError, authJwtMiddleware.verifyToken],
-  countryHandler.delete
+  cityHandler.delete
 );
 
 export default router;

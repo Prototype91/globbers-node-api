@@ -1,0 +1,29 @@
+import { User } from './user.model';
+import { Role } from './role.model';
+import { Country } from './country.model';
+import { City } from './city.model';
+import { TableNames } from '../enums/table-names.enum';
+
+export class Associations {
+  public static associate(): void {
+    User.hasMany(Country, {
+      sourceKey: 'id',
+      foreignKey: 'userId',
+      as: 'countries'
+    });
+
+    User.belongsToMany(Role, {
+      through: TableNames.UserRoles
+    });
+
+    Role.belongsToMany(User, {
+      through: TableNames.UserRoles
+    });
+
+    Country.hasMany(City, {
+      sourceKey: 'id',
+      foreignKey: 'countryId',
+      as: 'cities'
+    });
+  }
+}

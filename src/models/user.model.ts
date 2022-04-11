@@ -1,11 +1,14 @@
 import { DataTypes, Model } from 'sequelize';
 import db from '../config/database.config';
 import { TableNames } from '../enums/table-names.enum';
-import { ICountry } from '../interfaces/country.interface';
+import { IUser } from '../interfaces/user.interface';
 
-export class Country extends Model<ICountry> {}
+export class User extends Model<IUser> {
+  // fix typescript error of setRoles method
+  [x: string]: any;
+}
 
-Country.init(
+User.init(
   {
     id: {
       type: DataTypes.UUID,
@@ -17,29 +20,26 @@ Country.init(
       type: DataTypes.STRING,
       allowNull: false
     },
-    userId: {
-      type: DataTypes.UUID,
-      allowNull: false
-    },
-    continent: {
+    lastname: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    code: {
+    username: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    currencyCode: {
-      type: DataTypes.JSON,
-      allowNull: true
-    },
-    wikiDataId: {
+    password: {
       type: DataTypes.STRING,
-      allowNull: true
+      allowNull: false
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true
     }
   },
   {
     sequelize: db,
-    tableName: TableNames.Countries
+    tableName: TableNames.Users
   }
 );
